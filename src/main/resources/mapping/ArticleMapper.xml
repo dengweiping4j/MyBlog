@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wq.mapper.ArticleMapper">
+    <resultMap id="BaseResultMap" type="com.wq.entity.Article">
+        <id column="pkid" jdbcType="VARCHAR" property="pkid"/>
+        <result column="article_abstract" jdbcType="VARCHAR" property="articleAbstract"/>
+        <result column="title_page" jdbcType="VARCHAR" property="titlePage"/>
+        <result column="tag_key" jdbcType="VARCHAR" property="tagKey"/>
+        <result column="user_key" jdbcType="VARCHAR" property="userKey"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.wq.entity.Article">
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    pkid, article_abstract, title_page, tag_key, user_key, create_time, title
+  </sql>
+    <sql id="Blob_Column_List">
+    content
+  </sql>
+    <select id="findAllArticle" parameterType="Map" resultMap="BaseResultMap">
+    select * from article t limit #{start},#{size}
+  </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from article
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from article
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.wq.entity.Article">
+    insert into article (pkid, article_abstract, title_page, 
+      tag_key, user_key, create_time, 
+      title, content)
+    values (#{pkid,jdbcType=VARCHAR}, #{articleAbstract,jdbcType=VARCHAR}, #{titlePage,jdbcType=VARCHAR}, 
+      #{tagKey,jdbcType=VARCHAR}, #{userKey,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{title,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.wq.entity.Article">
+        insert into article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                pkid,
+            </if>
+            <if test="articleAbstract != null">
+                article_abstract,
+            </if>
+            <if test="titlePage != null">
+                title_page,
+            </if>
+            <if test="tagKey != null">
+                tag_key,
+            </if>
+            <if test="userKey != null">
+                user_key,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                #{pkid,jdbcType=VARCHAR},
+            </if>
+            <if test="articleAbstract != null">
+                #{articleAbstract,jdbcType=VARCHAR},
+            </if>
+            <if test="titlePage != null">
+                #{titlePage,jdbcType=VARCHAR},
+            </if>
+            <if test="tagKey != null">
+                #{tagKey,jdbcType=VARCHAR},
+            </if>
+            <if test="userKey != null">
+                #{userKey,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wq.entity.Article">
+        update article
+        <set>
+            <if test="articleAbstract != null">
+                article_abstract = #{articleAbstract,jdbcType=VARCHAR},
+            </if>
+            <if test="titlePage != null">
+                title_page = #{titlePage,jdbcType=VARCHAR},
+            </if>
+            <if test="tagKey != null">
+                tag_key = #{tagKey,jdbcType=VARCHAR},
+            </if>
+            <if test="userKey != null">
+                user_key = #{userKey,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wq.entity.Article">
+    update article
+    set article_abstract = #{articleAbstract,jdbcType=VARCHAR},
+      title_page = #{titlePage,jdbcType=VARCHAR},
+      tag_key = #{tagKey,jdbcType=VARCHAR},
+      user_key = #{userKey,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.wq.entity.Article">
+    update article
+    set article_abstract = #{articleAbstract,jdbcType=VARCHAR},
+      title_page = #{titlePage,jdbcType=VARCHAR},
+      tag_key = #{tagKey,jdbcType=VARCHAR},
+      user_key = #{userKey,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      title = #{title,jdbcType=VARCHAR}
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </update>
+</mapper>
