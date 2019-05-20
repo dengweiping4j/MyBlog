@@ -8,4 +8,6 @@ import java.util.Map;
  */
 public interface ArticleService {
     List<Map<String, Object>> findAllArticle(Map<String, Object> map);
+
+    String findArticleTotal();
 }

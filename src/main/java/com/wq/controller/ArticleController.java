@@ -22,13 +22,13 @@ public class ArticleController {
     private ArticleService articleService;
 
     /**
-     * 获取文章列表Controller
+     * 获取文章列表
      */
     @RequestMapping(value = "/findAllArticle", method = RequestMethod.POST)
     @ResponseBody
-    public JSONArray findAllArticle() {
+    public JSONArray findAllArticle(String start) {
         Map<String, Object> map = new HashMap<>();
-        map.put("start", 0);
+        map.put("start", Integer.parseInt(start));
         map.put("size", 10);
         List<Map<String, Object>> list = articleService.findAllArticle(map);
         if (list.size() > 0) {
@@ -36,5 +36,20 @@ public class ArticleController {
             return jsonArray;
         }
         return null;
+    }
+
+    /**
+     * 获取文章列表总数
+     */
+    @RequestMapping(value = "/findArticleTotal", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONArray findArticleTotal() {
+        String pageTotal = articleService.findArticleTotal();
+        Map<String, Object> map = new HashMap();
+        map.put("pageTotal", pageTotal);
+        map.put("pageSize", 10);
+        map.put("pageNum", Integer.parseInt(pageTotal) / 10 + 1);
+        JSONArray jsonArray = JSONArray.fromObject(map);
+        return jsonArray;
     }
 }

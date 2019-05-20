@@ -22,6 +22,9 @@
     <select id="findAllArticle" parameterType="Map" resultMap="BaseResultMap">
     select * from article t limit #{start},#{size}
   </select>
+    <select id="findArticleTotal" resultType="String">
+    select count(*) as pageTotal from article t
+  </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
         select
         <include refid="Base_Column_List"/>

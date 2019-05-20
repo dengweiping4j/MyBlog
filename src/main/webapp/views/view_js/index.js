@@ -1,18 +1,77 @@
 var url = '/MyBlog/article';
 $(function () {
+
     $.ajax({
         type: "POST",//方法类型
+        async: false,
         dataType: "json",//预期服务器返回的数据类型
         url: url + "/findAllArticle",//url
+        data: {'start': 0},
         success: function (data) {
             var str = "";
             $.each(data, function (n, value) {
                 console.log(value);
                 str += "<li><i><a href='/'><img src='images/" + value.titlePage + "'></a></i>"
-                    + "<h3><a href='/'>" + value.title + "</a></h3>"
+                    + "<h3><a href='/' style='text-decoration:none;'>" + value.title + "</a></h3>"
                     + " <p>" + value.content + "</p></li> ";
             });
             $("#main").append(str);
+        },
+        error: function () {
+            alert("系统异常");
+        }
+    });
+    //查询文章列表总数
+    $.ajax({
+        type: "POST",//方法类型
+        async: false,
+        dataType: "json",//预期服务器返回的数据类型
+        url: url + "/findArticleTotal",//url
+        success: function (data) {
+            var pageTotal = data[0].pageTotal;
+            var pageNum = data[0].pageNum;
+            var curPage = $("#curPage").val();
+            var str = "";
+            if (pageTotal >= 10) {//文章条数大于10条才显示页码栏
+                str += "<div class='pagelist'>";
+                if (curPage > 1) {//如果不是第一页，则显示"上一页"按钮
+                    str += "<a href='#' onclick='page(" + (curPage - 1) + ")'>上一页</a>";
+                }
+                if (curPage == 1) {
+                    str += "&nbsp;&nbsp;<a class='curPage'>1</a>";
+                } else {
+                    str += "&nbsp;&nbsp;<a onclick='page(" + 1 + ")'>1</a>";
+                }
+                if (curPage > 5) {//当前页大于5时则只显示当前页前3条～当前页后3条，以及首页
+                    str += "&nbsp;&nbsp;..."
+                    for (var i = curPage - 3; i <= curPage + 3 && i <= pageNum; i++) {
+                        if (i == curPage) {
+                            str += "&nbsp;&nbsp;<a href='#' class='curPage'>" + i + "</a>";
+                        } else {
+                            str += "&nbsp;&nbsp;<a href='#' onclick='page(" + i + ")'>" + i + "</a>";
+                        }
+                    }
+                } else {
+                    for (var i = 2; i <= pageNum && i <= curPage + 3; i++) {
+                        if (i == curPage) {
+                            str += "&nbsp;&nbsp;<a href='#' class='curPage'>" + i + "</a>";
+                        } else {
+                            str += "&nbsp;&nbsp;<a href='#' onclick='page(" + i + ")'>" + i + "</a>";
+                        }
+                    }
+                }
+                if (pageNum - curPage > 3) {//总页数大于当前页+3时，显示尾页
+                    if (pageNum - curPage > 4) {
+                        str += "&nbsp;&nbsp;...";
+                    }
+                    str += "&nbsp;&nbsp;<a href='#' onclick='page(" + pageNum + ")'>" + pageNum + "</a>";
+                }
+                if (curPage < pageNum) {//当前页不是最后一页，则显示下一页按钮
+                    str += "&nbsp;&nbsp;<a href='#' onclick='page(" + (curPage + 1) + ")'>下一页</a>";
+                }
+                str += "</div>";
+                $("#main").append(str);
+            }
         },
         error: function () {
             alert("系统异常");

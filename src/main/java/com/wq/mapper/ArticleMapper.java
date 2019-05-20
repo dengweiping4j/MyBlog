@@ -24,4 +24,6 @@ public interface ArticleMapper {
     int updateByPrimaryKey(Article record);
 
     List<Map<String,Object>> findAllArticle(Map<String, Object> map);
+
+    String findArticleTotal();
 }

@@ -19,4 +19,9 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Map<String, Object>> findAllArticle(Map<String, Object> map) {
         return articleMapper.findAllArticle(map);
     }
+
+    @Override
+    public String findArticleTotal() {
+        return articleMapper.findArticleTotal();
+    }
 }
