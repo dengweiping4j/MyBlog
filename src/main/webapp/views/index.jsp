@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="gbk">
-    <title>首页_杨青个人博客 - 一个站在web前端设计之路的女技术员个人博客网站</title>
+    <title>博客 首页</title>
     <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青"/>
     <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
 <body>
 <header class="header-navigation" id="header">
     <nav>
-        <div class="logo"><a href="/">杨青个人博客</a></div>
+        <div class="logo"><a href="/">博客</a></div>
         <h2 id="mnavh"><span class="navicon"></span></h2>
         <ul id="starlist">
             <li><a href="index.jsp">网站首页</a></li>
@@ -79,11 +79,10 @@
             </ul>
         </div>
     </aside>
+    <%--    第一次加载页面时存放
+    <input type="hidden" id="pageTotal">
+    <input type="hidden" id="pageNum">--%>
     <main class="r_box" id="main">
-        <%--<li><i><a href="/"><img src="images/2.jpg"></a></i>--%>
-        <%--<h3><a href="/">爱情没有永远，地老天荒也走不完</a></h3>--%>
-        <%--<p>也许，爱情没有永远，地老天荒也走不完，生命终结的末端，苦短情长。站在岁月的边端，那些美丽的定格，心伤的绝恋，都被四季的掩埋，一去不返。徒剩下这荒芜的花好月圆，一路相随，流离天涯背负了谁的思念？</p>--%>
-        <%--</li>--%>
     </main>
 </article>
 <footer>
