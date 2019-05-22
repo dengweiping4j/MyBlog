@@ -99,7 +99,7 @@ function setTag(tag, obj, className) {
 function save() {
     var content = $("#content").val();
     var tag = $("#tag").val();
-    myAlert('您要提示的内容');
+    myAlert('添加成功', 'alert');
     //
     // $.ajax({
     //     type: "POST",//方法类型
