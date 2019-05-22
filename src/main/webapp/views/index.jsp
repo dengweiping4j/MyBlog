@@ -24,23 +24,40 @@
         <div class="logo"><a href="/">博客</a></div>
         <h2 id="mnavh"><span class="navicon"></span></h2>
         <ul id="starlist">
-            <li><a href="index.jsp">网站首页</a></li>
-            <li><a href="share.html">我的相册</a></li>
-            <li><a href="list.html">我的日记</a></li>
-            <li><a href="about.html">关于我</a></li>
+            <li><a href="index.jsp">首页</a></li>
+            <li><a href="share.html">说说</a></li>
+            <li><a href="list.html">表白墙</a></li>
+            <li><a href="about.html">吐槽</a></li>
+            <li><a href="info.html">树洞</a></li>
+            <li><a href="infopic.html">知言</a></li>
             <li><a href="gbook.html">留言</a></li>
-            <li><a href="info.html">内容页</a></li>
-            <li><a href="infopic.html">内容页</a></li>
         </ul>
     </nav>
 </header>
 <article>
     <aside class="l_box">
         <div class="about_me">
-            <h2>关于我</h2>
+            <%--            <h2>关于匿名社区</h2>--%>
             <ul>
-                <i><img src="images/4.jpg"></i>
-                <p><b>杨青</b>，一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。</p>
+                <div><i><img src="images/4.jpg"></i><br><b style="font-size: 16px;margin-left: 10px;">超级管理员</b></div>
+                <div>
+                    <table class="table" style="text-align: center">
+                        <tbody>
+                        <tr>
+                            <td><a>已发布</a></td>
+                            <td><a>关注</a></td>
+                            <td><a>粉丝</a></td>
+                            <td><a>留言</a></td>
+                        </tr>
+                        <tr>
+                            <td><a><b>25</b></a></td>
+                            <td><a><b>38</b></a></td>
+                            <td><a><b>6</b></a></td>
+                            <td><a><b>8</b></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </ul>
         </div>
         <div class="search">
@@ -58,18 +75,18 @@
         <div class="fenlei">
             <h2>文章分类</h2>
             <ul>
-                <li><a href="/">学无止境（33）</a></li>
-                <li><a href="/">日记（19）</a></li>
-                <li><a href="/">慢生活（520）</a></li>
-                <li><a href="/">美文欣赏（40）</a></li>
+                <li><a href="/">说说（33）</a></li>
+                <li><a href="/">表白墙（520）</a></li>
+                <li><a href="/">吐槽（19）</a></li>
+                <li><a href="/">树洞（40）</a></li>
+                <li><a href="/">知言（50）</a></li>
             </ul>
         </div>
         <div class="tuijian">
-            <h2>站长推荐</h2>
+            <h2>推荐阅读</h2>
             <ul>
-                <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
-                <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
-                <li><a href="/">个人博客模板《绅士》后台管理</a></li>
+                <li><a href="/">《匿名社区》1.0版本正式上线了</a></li>
+                <li><a href="/">打破腾讯社交垄断，飞聊强势来袭</a></li>
             </ul>
         </div>
         <div class="guanzhu">
@@ -79,14 +96,28 @@
             </ul>
         </div>
     </aside>
-    <%--    第一次加载页面时存放
-    <input type="hidden" id="pageTotal">
-    <input type="hidden" id="pageNum">--%>
+    <main class="r_box" id="text">
+        <div class="btn-group btn-group-sm" style="margin-bottom: 5px;">
+            <button id="btn1" name="tagBtn" class="btn btn-default btn-success" onclick="setTag(1,this,'btn-success')">说&nbsp;&nbsp;说
+            </button>
+            <button id="btn2" name="tagBtn" class="btn btn-default " onclick="setTag(2,this,'btn-danger')">表白墙</button>
+            <button id="btn3" name="tagBtn" class="btn btn-default " onclick="setTag(3,this,'btn-warning')">吐&nbsp;&nbsp;槽
+            </button>
+            <button id="btn4" name="tagBtn" class="btn btn-default " onclick="setTag(4,this,'btn-info')">
+                树&nbsp;&nbsp;洞
+            </button>
+            <button id="btn5" name="tagBtn" class="btn btn-default " onclick="setTag(5,this,'btn-primary')">知&nbsp;&nbsp;言
+            </button>
+        </div>
+        <textarea id="content" class="form-control" rows="4" style="margin-bottom: 10px;" maxlength="120"></textarea>
+        <input type="hidden" id="tag" value="1">
+        <button class="btn btn-danger" style="margin-bottom: 20px;width: 80px;float:right" onclick="save()">发&nbsp;&nbsp;表</button>
+    </main>
     <main class="r_box" id="main">
     </main>
 </article>
 <footer>
-    <p>Design by <a href="http://www.yangqq.com" target="_blank">杨青个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+    <p>Copyright ©2019 <a>weipingdeng@qq.com</a> Powered By <a>匿名社区</a> Version 0.0.1</p>
 </footer>
 <a href="#" class="cd-top">Top</a>
 </body>

@@ -28,8 +28,8 @@ public class ArticleController {
     @ResponseBody
     public JSONArray findAllArticle(String curPage) {
         Map<String, Object> map = new HashMap<>();
-        map.put("start", (Integer.parseInt(curPage) - 1) * 3);
-        map.put("size", 3);
+        map.put("start", (Integer.parseInt(curPage) - 1) * 10);
+        map.put("size", 10);
         List<Map<String, Object>> list = articleService.findAllArticle(map);
         if (list.size() > 0) {
             JSONArray jsonArray = JSONArray.fromObject(list);
@@ -47,8 +47,8 @@ public class ArticleController {
         String pageTotal = articleService.findArticleTotal();
         Map<String, Object> map = new HashMap();
         map.put("pageTotal", pageTotal);
-        map.put("pageSize", 3);
-        map.put("pageNum", Integer.parseInt(pageTotal) / 3 + 1);
+        map.put("pageSize", 10);
+        map.put("pageNum", Integer.parseInt(pageTotal) / 10 + 1);
         JSONArray jsonArray = JSONArray.fromObject(map);
         return jsonArray;
     }

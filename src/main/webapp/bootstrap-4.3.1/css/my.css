@@ -1,0 +1,64 @@
+/*bootstrap outline设置*/
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    　border-color: transparent;
+    box-shadow: none;
+}
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+    　border-color: transparent;
+    box-shadow: none;
+}
+
+a:focus {
+    　border-color: transparent;
+    box-shadow: none;
+}
+
+a:focus {
+    border-color: transparent;
+    box-shadow: none;
+}
+
+/*bootstrap-select outline设置*/
+.bootstrap-select .dropdown-toggle:focus {
+    　　outline: thin dotted #333333 !important;
+    　　outline: 5px auto -webkit-focus-ring-color !important;
+    　　outline-offset: -2px;
+}
+
+.form-control {
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border-color: transparent;
+    box-shadow: none;
+}
+
+/*自制弹窗样式*/
+
+.mark {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    width: 80%;
+    text-align: center;
+    font-size: 0.28rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 0.1rem;
+}

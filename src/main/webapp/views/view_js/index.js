@@ -3,6 +3,7 @@ $(function () {
     page(1);
 });
 
+//文章列表加载，分页控制
 function page(curPage) {
     $("#main").empty();
     $.ajax({
@@ -14,7 +15,6 @@ function page(curPage) {
         success: function (data) {
             var str = "";
             $.each(data, function (n, value) {
-                console.log(value);
                 str += "<li><i><a href='/'><img src='images/" + value.titlePage + "'></a></i>"
                     + "<h3><a href='/' style='text-decoration:none;'>" + value.title + "</a></h3>"
                     + " <p>" + value.content + "</p></li> ";
@@ -69,7 +69,7 @@ function page(curPage) {
                 }
 
                 if (pageNum - curPage > 3) {//总页数大于当前页+3时，显示尾页
-                    if (pageNum - curPage > 4) {
+                    if (pageNum - curPage > 4) {//总页数大于当前页+3且不连续时，才显示“...”
                         str += "&nbsp;&nbsp;...";
                     }
                     str += "&nbsp;&nbsp;<a href='#' onclick='page(" + pageNum + ")'>" + pageNum + "</a>";
@@ -86,4 +86,31 @@ function page(curPage) {
             alert("系统异常");
         }
     });
+}
+
+//设置标签值
+function setTag(tag, obj, className) {
+    $("button[name=tagBtn]").removeClass();
+    $("button[name=tagBtn]").addClass('btn btn-default');
+    $(obj).addClass(className);
+    $("#tag").val(tag);
+}
+
+function save() {
+    var content = $("#content").val();
+    var tag = $("#tag").val();
+    myAlert('您要提示的内容');
+    //
+    // $.ajax({
+    //     type: "POST",//方法类型
+    //     dataType: "json",//预期服务器返回的数据类型
+    //     url: url + "/addSave",//url
+    //     data: {'content': content, 'tagKey': tag},
+    //     success: function (result) {
+    //
+    //     },
+    //     error: function () {
+    //         alert("系统异常");
+    //     }
+    // });
 }
