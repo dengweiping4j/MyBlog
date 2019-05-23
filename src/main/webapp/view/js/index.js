@@ -13,10 +13,11 @@ function page(curPage) {
         url: url + "/findAllArticle",//url
         data: {'curPage': curPage},
         success: function (data) {
+            console.log(data)
             var str = "";
             $.each(data, function (n, value) {
-                str += "<li><i><a href='/'><img src='images/" + value.titlePage + "'></a></i>"
-                    + "<h3><a href='/' style='text-decoration:none;'>" + value.title + "</a></h3>"
+                str += "<li><i><a href='/'><span>" + value.createTime + "</span></a></i>"
+                    + "<h3><a href='/' style='text-decoration:none;'>" + value.tagName + "</a></h3>"
                     + " <p>" + value.content + "</p></li> ";
             });
             $("#main").append(str);
@@ -89,27 +90,31 @@ function page(curPage) {
 }
 
 //设置标签值
-function setTag(tag, obj, className) {
+function setTag(tag, obj, className, text) {
     $("button[name=tagBtn]").removeClass();
     $("button[name=tagBtn]").addClass('btn btn-default');
     $(obj).addClass(className);
     $("#tag").val(tag);
+    $("#content").attr('placeholder', text);
 }
 
 function save() {
     var content = $("#content").val();
     var tag = $("#tag").val();
-    Alert('添加成功');
-    // $.ajax({
-    //     type: "POST",//方法类型
-    //     dataType: "json",//预期服务器返回的数据类型
-    //     url: url + "/addSave",//url
-    //     data: {'content': content, 'tagKey': tag},
-    //     success: function (result) {
-    //
-    //     },
-    //     error: function () {
-    //         alert("系统异常");
-    //     }
-    // });
+    var data = {'content': content, 'tagKey': tag};
+    Alert('', 'load');
+    $.ajax({
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: url + "/addSave",//url
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data),
+        success: function (result) {
+            Close();
+            page(1);
+        },
+        error: function () {
+            alert("系统异常");
+        }
+    });
 }

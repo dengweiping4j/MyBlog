@@ -1,8 +1,10 @@
 package com.wq.controller;
 
+import com.wq.entity.Article;
 import com.wq.service.ArticleService;
 import net.sf.json.JSONArray;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -51,5 +53,14 @@ public class ArticleController {
         map.put("pageNum", Integer.parseInt(pageTotal) / 10 + 1);
         JSONArray jsonArray = JSONArray.fromObject(map);
         return jsonArray;
+    }
+
+    /**
+     * 添加文章
+     */
+    @RequestMapping(value = "/addSave", method = RequestMethod.POST)
+    @ResponseBody
+    public int addSave(@RequestBody Article article) {
+        return articleService.addArticle(article);
     }
 }

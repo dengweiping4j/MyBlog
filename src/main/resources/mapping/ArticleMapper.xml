@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wq.mapper.ArticleMapper">
-    <resultMap id="BaseResultMap" type="com.wq.entity.Article">
+    <resultMap id="BaseResultMap" type="java.util.HashMap">
         <id column="pkid" jdbcType="VARCHAR" property="pkid"/>
         <result column="article_abstract" jdbcType="VARCHAR" property="articleAbstract"/>
         <result column="title_page" jdbcType="VARCHAR" property="titlePage"/>
@@ -19,8 +19,26 @@
     <sql id="Blob_Column_List">
     content
   </sql>
-    <select id="findAllArticle" parameterType="Map" resultMap="BaseResultMap">
-    select * from article t limit #{start},#{size}
+    <select id="findAllArticle" parameterType="Map" resultType="java.util.HashMap">
+        SELECT
+        t.pkid,
+        t.content,
+        (
+        CASE
+                WHEN t.tag_key = '1' THEN '说说'
+                WHEN t.tag_key = '2' THEN '表白'
+                WHEN t.tag_key = '3' THEN '吐槽'
+                WHEN t.tag_key = '4' THEN '树洞'
+                WHEN t.tag_key = '5' THEN '知言'
+                else '' END) tagName,
+        t1.user_name AS userName,
+	    date_format(t.create_time,'%Y-%m-%d %H:%i:%s')  createTime
+        FROM
+        article t
+        LEFT JOIN USER t1 ON t.user_key = t1.user_id
+        ORDER BY
+        create_time DESC
+        LIMIT #{start},#{size}
   </select>
     <select id="findArticleTotal" resultType="String">
     select count(*) as pageTotal from article t

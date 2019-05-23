@@ -14,8 +14,8 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/comm.js"></script>
     <![endif]-->
     <script src="${pageContext.request.contextPath}/view/js/index.js"></script>
-<script>
-</script>
+    <script>
+    </script>
 </head>
 <body>
 <header class="header-navigation" id="header">
@@ -38,7 +38,8 @@
         <div class="about_me">
             <%--            <h2>关于匿名社区</h2>--%>
             <ul>
-                <div><i><img src="images/4.jpg"></i><br><b style="font-size: 16px;margin-left: 10px;">超级管理员</b></div>
+                <div><i><img src="${pageContext.request.contextPath}/view/images/4.jpg"></i><br><b
+                        style="font-size: 16px;margin-left: 10px;">超级管理员</b></div>
                 <div>
                     <table class="table" style="text-align: center">
                         <tbody>
@@ -91,24 +92,30 @@
         <div class="guanzhu">
             <h2>关注我 么么哒</h2>
             <ul>
-                <img src="images/wx.jpg">
+                <img src="${pageContext.request.contextPath}/view/images/wx.jpg">
             </ul>
         </div>
     </aside>
     <main class="r_box" id="text">
-        <div class="btn-group btn-group-sm" style="margin-bottom: 5px;">
-            <button id="btn1" name="tagBtn" class="btn btn-default btn-success" onclick="setTag(1,this,'btn-success')">说&nbsp;&nbsp;说
+
+        <textarea id="content" class="form-control" rows="4" style="margin-bottom: 10px;" maxlength="120"
+                  placeholder="请输入说说内容"></textarea>
+        <div class="btn-group btn-group-sm" style="margin-bottom: 0px;">
+            <button id="btn1" name="tagBtn" class="btn btn-default btn-success"
+                    onclick="setTag(1,this,'btn-success','请输入说说内容')">说&nbsp;&nbsp;说
             </button>
-            <button id="btn2" name="tagBtn" class="btn btn-default " onclick="setTag(2,this,'btn-danger')">表白墙</button>
-            <button id="btn3" name="tagBtn" class="btn btn-default " onclick="setTag(3,this,'btn-warning')">吐&nbsp;&nbsp;槽
+            <button id="btn2" name="tagBtn" class="btn btn-default " onclick="setTag(2,this,'btn-danger','表个白吧！')">表白墙
             </button>
-            <button id="btn4" name="tagBtn" class="btn btn-default " onclick="setTag(4,this,'btn-info')">
+            <button id="btn3" name="tagBtn" class="btn btn-default " onclick="setTag(3,this,'btn-warning','吐个槽吧！')">吐&nbsp;&nbsp;槽
+            </button>
+            <button id="btn4" name="tagBtn" class="btn btn-default "
+                    onclick="setTag(4,this,'btn-info','有什么秘密都可以在这里说哦！')">
                 树&nbsp;&nbsp;洞
             </button>
-            <button id="btn5" name="tagBtn" class="btn btn-default " onclick="setTag(5,this,'btn-primary')">知&nbsp;&nbsp;言
+            <button id="btn5" name="tagBtn" class="btn btn-default " onclick="setTag(5,this,'btn-primary','把你知道的都说出来')">
+                知&nbsp;&nbsp;言
             </button>
         </div>
-        <textarea id="content" class="form-control" rows="4" style="margin-bottom: 10px;" maxlength="120"></textarea>
         <input type="hidden" id="tag" value="1">
         <button id="btn" class="btn btn-danger" style="margin-bottom: 20px;width: 80px;float:right" onclick="save()">发&nbsp;&nbsp;表</button>
     </main>
