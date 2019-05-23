@@ -21,10 +21,6 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/view/zdialog/css/zdialog.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/view/zdialog/js/zdialog.js"></script>
     <!--弹出层 结束 -->
-    <!--message 开始 -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/view/message/message.css">
-    <script src="${pageContext.request.contextPath}/view/message/message.min.js"></script>
-    <!--message 结束 -->
     <script src="${pageContext.request.contextPath}/view/common/common.js"></script>
 </head>
 </html>
