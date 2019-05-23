@@ -54,26 +54,26 @@
             <!-- 为哪些JSP页面引入一个公共页面 -->
             <url-pattern>*.jsp</url-pattern>
             <!-- 被引入的公共页面 -->
-            <include-prelude>/views/common/common.jsp</include-prelude>
+            <include-prelude>/view/common/common.jsp</include-prelude>
         </jsp-property-group>
     </jsp-config>
 
     <!--错误页面配置,这里只是简单的配置了一下 -->
     <error-page>
         <error-code>404</error-code>
-        <location>/main.jsp</location>
+        <location>/view/index.jsp</location>
     </error-page>
     <error-page>
         <error-code>405</error-code>
-        <location>/main.jsp</location>
+        <location>/view/index.jsp</location>
     </error-page>
     <error-page>
         <error-code>415</error-code>
-        <location>/main.jsp</location>
+        <location>/view/index.jsp</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/main.jsp</location>
+        <location>/view/index.jsp</location>
     </error-page>
     <!--错误页面配置 -->
 </web-app>
