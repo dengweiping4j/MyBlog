@@ -83,3 +83,32 @@ function confirmR() {
 function Close() {
     $.DialogByZ.Close();
 };
+
+function Message(text, type) {
+    if (type == undefined) {
+        type = 'info';
+    }
+    switch (type) {
+        case 'info':
+            $.message({
+                message: text,
+                type: 'info'
+            });
+            break;
+        case 'success':
+            $.message(text);
+            break;
+        case 'error':
+            $.message({
+                message: text,
+                type: 'error'
+            });
+            break;
+        case 'warning':
+            $.message({
+                message: text,
+                type: 'warning'
+            });
+            break;
+    }
+};
