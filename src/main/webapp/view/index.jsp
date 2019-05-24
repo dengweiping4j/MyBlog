@@ -38,7 +38,7 @@
         <div class="about_me">
             <%--            <h2>关于匿名社区</h2>--%>
             <ul>
-                <div><i><img src="${pageContext.request.contextPath}/view/images/4.jpg"></i><br><b
+                <div><i><img src="${pageContext.request.contextPath}/view/images/photo.jpg" ></i><br><b
                         style="font-size: 16px;margin-left: 5px;">超级管理员</b></div>
                 <div>
                     <table class="table" style="text-align: center">
