@@ -99,10 +99,10 @@
     <main class="r_box" id="text">
 
         <textarea id="content" class="form-control" rows="4" style="margin-bottom: 10px;" maxlength="120"
-                  placeholder="请输入说说内容"></textarea>
+                  placeholder="说点什么吧！"></textarea>
         <div class="btn-group btn-group-sm" style="margin-bottom: 0px;background: rgba(255,255,255,0.5)">
             <button id="btn1" name="tagBtn" class="btn btn-default btn-success"
-                    onclick="setTag(1,this,'btn-success','请输入说说内容')">说&nbsp;&nbsp;说
+                    onclick="setTag(1,this,'btn-success','说点什么吧！')">说&nbsp;&nbsp;说
             </button>
             <button id="btn2" name="tagBtn" class="btn btn-default " onclick="setTag(2,this,'btn-danger','表个白吧！')">表白墙
             </button>
