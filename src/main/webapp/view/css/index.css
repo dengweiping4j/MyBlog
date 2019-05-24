@@ -123,10 +123,6 @@
     text-shadow: #FFF 1px 1px 1px
 }
 
-.r_box li div h3 a {
-    cursor: pointer;
-}
-
 .r_box li div h4 {
     font-size: 14px;
 }
@@ -179,7 +175,6 @@
     border: 1px solid #fff;
     padding: 5px 10px;
     background: #FFF;
-    cursor: pointer;
 }
 
 .pagelist a:hover {
