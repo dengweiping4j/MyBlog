@@ -178,7 +178,8 @@
     display: inline-block;
     border: 1px solid #fff;
     padding: 5px 10px;
-    background: #FFF
+    background: #FFF;
+    cursor: pointer;
 }
 
 .pagelist a:hover {
