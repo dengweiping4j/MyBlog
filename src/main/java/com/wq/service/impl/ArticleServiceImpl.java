@@ -22,8 +22,8 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Map<String, Object>> findAllArticle(Map<String, Object> map) {
         List<Map<String, Object>> allArticle = articleMapper.findAllArticle(map);
         List<Map<String, Object>> newAllArticle = new ArrayList<>();
-        for (Map<String, Object> allArticleMap : allArticle) {//日期处理
-            String result = DateUtil.DateHandel(allArticleMap.get("createTime") + "");
+        for (Map<String, Object> allArticleMap : allArticle) {
+            String result = DateUtil.DateHandel(allArticleMap.get("createTime") + "");//日期处理
             if (result != null) {
                 allArticleMap.put("createTime", result);
             }

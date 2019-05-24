@@ -1,7 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
 
-body{ -webkit-font-smoothing: antialiased; }
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
 .zbox-popup {
     position: fixed;
     z-index: 10000;
@@ -10,16 +13,16 @@ body{ -webkit-font-smoothing: antialiased; }
     display: none;
     overflow: hidden;
     width: 270px;
-    -webkit-transition-property: -webkit-transform,opacity;
-    transition-property: transform,opacity;
-    -webkit-transform:perspective(1200px) translate3d(-50%,-50%,0) scale(1.2) ;
-    transform:perspective(1200px) translate3d(-50%,-50%,0) scale(1.2);
+    -webkit-transition-property: -webkit-transform, opacity;
+    transition-property: transform, opacity;
+    -webkit-transform: perspective(1200px) translate3d(-50%, -50%, 0) scale(1.2);
+    transform: perspective(1200px) translate3d(-50%, -50%, 0) scale(1.2);
     text-align: center;
     opacity: 0;
     color: #000;
     border-radius: 3px;
     z-index: 10000;
-     -webkit-perspective: 1200px;
+    -webkit-perspective: 1200px;
     -moz-perspective: 1200px;
     -ms-perspective: 1200px;
     -o-perspective: 1200px;
@@ -31,21 +34,24 @@ body{ -webkit-font-smoothing: antialiased; }
     transform-style: preserve-3d;
     -webkit-font-smoothing: antialiased;
 }
+
 .zbox-popup.zbox-popup-in {
     display: block;
     transition-property: all;
     -webkit-transition-duration: 400ms;
     transition-duration: 400ms;
-    -webkit-transform:perspective(1200px) translate3d(-50%,-50%,0) scale(1) ;
-    transform:perspective(1200px) translate3d(-50%,-50%,0) scale(1);
+    -webkit-transform: perspective(1200px) translate3d(-50%, -50%, 0) scale(1);
+    transform: perspective(1200px) translate3d(-50%, -50%, 0) scale(1);
     opacity: 1;
 }
+
 .zbox-popup-inner {
     position: relative;
     padding: 15px;
     border-radius: 3px 3px 0 0;
-    background: rgba(255,255,255,.95);
+    background: rgba(255, 255, 255, .95);
 }
+
 .zbox-popup-inner:after {
     position: absolute;
     z-index: 15;
@@ -61,21 +67,24 @@ body{ -webkit-font-smoothing: antialiased; }
     transform: scaleY(.5);
     -webkit-transform-origin: 50% 100%;
     transform-origin: 50% 100%;
-    background-color: rgba(0,0,0,.2);
+    background-color: rgba(0, 0, 0, .2);
 }
+
 .zbox-popup-title {
-    font-size:16px;
+    font-size: 16px;
     font-weight: 500;
     text-align: center;
     color: #4a4a4a;
 }
-.zbox-popup-title+.zbox-popup-text {
+
+.zbox-popup-title + .zbox-popup-text {
     font-family: inherit;
     font-size: 16px;
     margin: 5px 0 0;
     color: #4a4a4a;
     line-height: 1.75;
 }
+
 .zbox-popup-buttons {
     position: relative;
     display: -webkit-box;
@@ -86,6 +95,7 @@ body{ -webkit-font-smoothing: antialiased; }
     -webkit-justify-content: center;
     justify-content: center;
 }
+
 .zbox-popup-button {
     font-size: 14px;
     line-height: 44px;
@@ -100,16 +110,19 @@ body{ -webkit-font-smoothing: antialiased; }
     text-align: center;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color:#fd9e09;
-    background: rgba(255,255,255,.95);
+    color: #fd9e09;
+    background: rgba(255, 255, 255, .95);
     -webkit-box-flex: 1;
 }
+
 .zbox-popup-button:first-child:last-child {
     border-radius: 0 0 3px 3px;
 }
+
 .zbox-popup-button.zbox-popup-button-bold {
     font-weight: 600;
 }
+
 .zbox-popup-button:after {
     position: absolute;
     z-index: 15;
@@ -125,11 +138,13 @@ body{ -webkit-font-smoothing: antialiased; }
     transform: scaleX(.5);
     -webkit-transform-origin: 100% 50%;
     transform-origin: 100% 50%;
-    background-color: rgba(0,0,0,.2);
+    background-color: rgba(0, 0, 0, .2);
 }
+
 .zbox-popup-backdrop.zbox-active {
     opacity: 1;
 }
+
 .zbox-popup-backdrop {
     position: fixed;
     z-index: 998;
@@ -140,30 +155,35 @@ body{ -webkit-font-smoothing: antialiased; }
     -webkit-transition-duration: 400ms;
     transition-duration: 400ms;
     opacity: 0;
-    background: rgba(0,0,0,.4);
+    background: rgba(0, 0, 0, .4);
 }
-.zbox-toast-container{
-	position:fixed;
-	z-index:9999;
-	bottom:60px;
-	width:100%;
-	-webkit-transition:opacity .8s;
-	transition:opacity .8s;
-	opacity:0;
-	left: 0;
-	}
-.zbox-toast-container.zbox-active{opacity:1}
-.zbox-toast-message{
-	font-size:14px;
-	width:270px;
-	margin:5px auto;
-	padding:5px;
-	text-align:center;
-	color:#000;
-	border-radius:5px;
-	background-color:#d8d8d8;
-	}
-	
+
+.zbox-toast-container {
+    position: fixed;
+    z-index: 9999;
+    top: 100px;
+    width: 100%;
+    -webkit-transition: opacity .8s;
+    transition: opacity .8s;
+    opacity: 0;
+    left: 0;
+}
+
+.zbox-toast-container.zbox-active {
+    opacity: 1
+}
+
+.zbox-toast-message {
+    font-size: 18px;
+    width: 200px;
+    margin: 5px auto;
+    padding: 5px;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 47%;
+    background-color: #d8aa18;
+}
+
 
 .zbox-btn-outlined.zbox-btn-blue, .zbox-btn-outlined.zbox-btn-primary {
     color: #007aff;
@@ -172,11 +192,13 @@ body{ -webkit-font-smoothing: antialiased; }
 .zbox-btn-outlined {
     background-color: transparent;
 }
+
 .zbox-btn-blue, .zbox-btn-primary, input[type=submit] {
     color: #fff;
     border: 1px solid #007aff;
     background-color: #007aff;
 }
+
 .zbox-btn, button, input[type=button], input[type=reset], input[type=submit] {
     font-size: 14px;
     font-weight: 400;
@@ -205,22 +227,37 @@ body{ -webkit-font-smoothing: antialiased; }
     background-color: #fff;
     background-clip: padding-box;
 }
+
 .zbox-btn {
     display: block;
     width: 120px;
     margin: 10px auto;
 }
-	#zchange{ width:44px; height: 44px; display:block;margin: 0 auto; 
-	animation:circle1 1.2s infinite linear; -webkit-animation:circle1 1.2s infinite linear; transition: all linear;}
 
-@-webkit-keyframes circle1
-{
-0% { -webkit-transform: rotate(0deg)  }
-100% {  -webkit-transform: rotate(360deg)  ;}
+#zchange {
+    width: 44px;
+    height: 44px;
+    display: block;
+    margin: 0 auto;
+    animation: circle1 1.2s infinite linear;
+    -webkit-animation: circle1 1.2s infinite linear;
+    transition: all linear;
 }
 
-@keyframes circle1
-{
-0% { transform: rotate(0deg)  ;}
-100% { transform: rotate(360deg) ;}
+@-webkit-keyframes circle1 {
+    0% {
+        -webkit-transform: rotate(0deg)
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes circle1 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

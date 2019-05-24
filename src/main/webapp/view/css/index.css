@@ -33,7 +33,7 @@
     width: 120px;
     float: left;
     clear: left;
-    margin-right: 10px;
+    margin-right: 0px;
     height: 90px;
     overflow: hidden
 }
@@ -149,7 +149,7 @@
 }
 
 .r_box div p {
-    margin-top: 5px;
+    margin-top: 10px;
     margin-left: -25px;
     line-height: 22px;
     overflow: hidden;

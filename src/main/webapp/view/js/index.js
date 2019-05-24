@@ -45,7 +45,7 @@ function page(curPage) {
                     "               </h3>" +
                     "               <h4>" + value.createTime + "</h4>" +
                     "          </div>" +
-                    "          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + value.content + "</p>" +
+                    "          <p>" + value.content + "</p>" +
                     "      </div>" +
                     " </li>";
             });
@@ -130,20 +130,25 @@ function setTag(tag, obj, className, text) {
 function save() {
     var content = $("#content").val();
     var tag = $("#tag").val();
-    var data = {'content': content, 'tagKey': tag};
-    Alert('', 'load');
-    $.ajax({
-        type: "POST",//方法类型
-        dataType: "json",//预期服务器返回的数据类型
-        url: url + "/addSave",//url
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(data),
-        success: function (result) {
-            Close();
-            page(1);
-        },
-        error: function () {
-            alert("系统异常");
-        }
-    });
+    if (content != null && content != '') {
+        var data = {'content': content, 'tagKey': tag};
+        Alert('', 'load');
+        $.ajax({
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: url + "/addSave",//url
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            success: function (result) {
+                Close();
+                $("#content").val("");//重置内容输入框
+                page(1);
+            },
+            error: function () {
+                alert("系统异常");
+            }
+        });
+    } else {
+        Alert("请输入内容", "auto");
+    }
 }
