@@ -23,6 +23,7 @@
         SELECT
         t.pkid,
         t.content,
+        t.tag_key tagKey,
         (
         CASE
                 WHEN t.tag_key = '1' THEN '说说'
@@ -32,7 +33,8 @@
                 WHEN t.tag_key = '5' THEN '知言'
                 else '' END) tagName,
         t1.user_name AS userName,
-	    date_format(t.create_time,'%Y-%m-%d %H:%i:%s')  createTime
+	    date_format(t.create_time,'%Y-%m-%d %H:%i:%s')  createTime,
+	    t1.profile_photo profilePhoto
         FROM
         article t
         LEFT JOIN USER t1 ON t.user_key = t1.user_id

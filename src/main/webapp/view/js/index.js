@@ -13,12 +13,41 @@ function page(curPage) {
         url: url + "/findAllArticle",//url
         data: {'curPage': curPage},
         success: function (data) {
-            console.log(data)
             var str = "";
+            var tagLabel = "";
             $.each(data, function (n, value) {
-                str += "<li><i><a href='/'><span>" + value.createTime + "</span></a></i>"
-                    + "<h3><a href='/' style='text-decoration:none;'>" + value.tagName + "</a></h3>"
-                    + " <p>" + value.content + "</p></li> ";
+
+                switch (value.tagKey) {
+                    case '1':
+                        tagLabel = "<span class='badge badge-pill badge-success' style='clear: right;float: right'><font size='2px'>" + value.tagName + "</font></span>";
+                        break;
+                    case '2':
+                        tagLabel = "<span class='badge badge-pill badge-danger' style='clear: right;float: right'><font size='2px'>" + value.tagName + "</font></span>";
+                        break;
+                    case '3':
+                        tagLabel = "<span class='badge badge-pill badge-warning' style='clear: right;float: right'><font size='2px'>" + value.tagName + "</font></span>";
+                        break;
+                    case '4':
+                        tagLabel = "<span class='badge badge-pill badge-info' style='clear: right;float: right'><font size='2px'>" + value.tagName + "</font></span>";
+                        break;
+                    case '5':
+                        tagLabel = "<span class='badge badge-pill badge-primary' style='clear: right;float: right'><font size='2px'>" + value.tagName + "</font></span>";
+                        break;
+                }
+                str += " <li class='media'>" +
+                    "      <a class='media-left media-bottom' href='#'>" +
+                    "          <img src='/MyBlog/view/images/" + value.profilePhoto + "'" +
+                    "      </a>" +
+                    "      <div class='media-body'>" +
+                    "          <div>" + tagLabel +
+                    "               <h3 class='media-heading'>" +
+                    "                   <a style='color: #1e7e34;'>" + value.userName + "</a>" +
+                    "               </h3>" +
+                    "               <h4>" + value.createTime + "</h4>" +
+                    "          </div>" +
+                    "          <p>" + value.content + "</p>" +
+                    "      </div>" +
+                    " </li>";
             });
             $("#main").append(str);
         },
