@@ -141,7 +141,6 @@ function save() {
             data: JSON.stringify(data),
             success: function (result) {
                 Close();
-                $("#content").val("");//重置内容输入框
                 page(1);
             },
             error: function () {
