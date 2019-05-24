@@ -41,7 +41,7 @@ function page(curPage) {
                     "      <div class='media-body'>" +
                     "          <div>" + tagLabel +
                     "               <h3 class='media-heading'>" +
-                    "                   <a style='color: #1e7e34;'>" + value.userName + "</a>" +
+                    "                   <a style='color: #1a5f2f;'>" + value.userName + "</a>" +
                     "               </h3>" +
                     "               <h4>" + value.createTime + "</h4>" +
                     "          </div>" +

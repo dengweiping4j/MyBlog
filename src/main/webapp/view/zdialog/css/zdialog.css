@@ -175,13 +175,13 @@ body {
 
 .zbox-toast-message {
     font-size: 18px;
-    width: 200px;
+    width: 180px;
     margin: 5px auto;
     padding: 5px;
     text-align: center;
-    color: #ffffff;
-    border-radius: 47%;
-    background-color: #d8aa18;
+    color: #6c6b36;
+    border-radius: 5px;
+    background-color: rgba(212, 209, 83, 0.47);
 }
 
 
