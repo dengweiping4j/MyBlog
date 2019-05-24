@@ -149,6 +149,6 @@ function save() {
             }
         });
     } else {
-        Alert("请输入内容", "auto");
+        Alert("请输入内容！", "auto");
     }
 }

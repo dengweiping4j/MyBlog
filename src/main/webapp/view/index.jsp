@@ -38,7 +38,7 @@
         <div class="about_me">
             <%--            <h2>关于匿名社区</h2>--%>
             <ul>
-                <div><i><img src="${pageContext.request.contextPath}/view/images/photo.jpg" ></i><br><b
+                <div><i><img src="${pageContext.request.contextPath}/view/images/photo.jpg"></i><br><b
                         style="font-size: 16px;margin-left: 5px;">超级管理员</b></div>
                 <div>
                     <table class="table" style="text-align: center">
@@ -100,7 +100,7 @@
 
         <textarea id="content" class="form-control" rows="4" style="margin-bottom: 10px;" maxlength="120"
                   placeholder="请输入说说内容"></textarea>
-        <div class="btn-group btn-group-sm" style="margin-bottom: 0px;">
+        <div class="btn-group btn-group-sm" style="margin-bottom: 0px;background: rgba(255,255,255,0.5)">
             <button id="btn1" name="tagBtn" class="btn btn-default btn-success"
                     onclick="setTag(1,this,'btn-success','请输入说说内容')">说&nbsp;&nbsp;说
             </button>
@@ -120,30 +120,6 @@
         <button id="btn" class="btn btn-danger" style="margin-bottom: 20px;width: 80px;float:right" onclick="save()">发&nbsp;&nbsp;表</button>
     </main>
     <main class="r_box" id="main">
-        <%--<li class="media">
-            <a class="media-left media-bottom" href="#">
-                <img src="images/2.jpg">
-            </a>
-            <div class="media-body">
-                <span class='badge badge-pill badge-success' style="clear: right;float: right">说说</span>
-                <h3 class="media-heading">
-                    <a>超级管理员</a>
-                    &lt;%&ndash; <span class="badge badge-pill badge-default">默认</span>
-                     <span class="badge badge-pill badge-primary">主要</span>
-                     <span class="badge badge-pill badge-success">成功</span>
-                     <span class="badge badge-pill badge-info">信息</span>
-                     <span class="badge badge-pill badge-warning">警告</span>
-                     <span class="badge badge-pill badge-danger">危险</span>&ndash;%&gt;
-                </h3>
-                <h4>2019年5月23日 13:34:42</h4>
-                <p>
-                    有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。
-                    有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。
-                    有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。
-                    有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。
-                </p>
-            </div>
-        </li>--%>
     </main>
 </article>
 <footer>
