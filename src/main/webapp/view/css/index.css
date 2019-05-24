@@ -149,9 +149,8 @@
 }
 
 .r_box div p {
-    clear: left;
-    float: left;
-    margin-top: 20px;
+    margin-top: 5px;
+    margin-left: -25px;
     line-height: 22px;
     overflow: hidden;
     text-overflow: ellipsis;

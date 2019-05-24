@@ -45,7 +45,7 @@ function page(curPage) {
                     "               </h3>" +
                     "               <h4>" + value.createTime + "</h4>" +
                     "          </div>" +
-                    "          <p>" + value.content + "</p>" +
+                    "          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + value.content + "</p>" +
                     "      </div>" +
                     " </li>";
             });
