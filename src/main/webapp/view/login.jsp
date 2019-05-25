@@ -17,8 +17,12 @@
             /*height: 462px;*/
         }
 
-        #myppt {
-            margin-top: -20px;
+        #register {
+            margin-top: 200px;
+        }
+
+        #login {
+            margin-top: 220px;
         }
     </style>
 </head>
@@ -51,10 +55,10 @@
                         <label for="">再次输入密码</label>
                         <input class="form-control" type="password" placeholder="至少6位字母或数字">
                     </div>
-<%--                    <div class="form-group">--%>
-<%--                        <label for="">邮箱</label>--%>
-<%--                        <input class="form-control" type="email" placeholder="例如:123@123.com">--%>
-<%--                    </div>--%>
+                    <%--                    <div class="form-group">--%>
+                    <%--                        <label for="">邮箱</label>--%>
+                    <%--                        <input class="form-control" type="email" placeholder="例如:123@123.com">--%>
+                    <%--                    </div>--%>
                     <div class="text-right">
                         <button class="btn btn-primary" type="submit">提交</button>
                         <button class="btn btn-danger" data-dismiss="modal">取消</button>

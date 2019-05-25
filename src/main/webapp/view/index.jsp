@@ -30,18 +30,7 @@
             <li><a href="${pageContext.request.contextPath}/view/info.html">树洞</a></li>
             <li><a href="${pageContext.request.contextPath}/view/infopic.html">知言</a></li>
             <li><a href="${pageContext.request.contextPath}/view/gbook.html">留言</a></li>
-            <li id="login">
-                <span class="badge badge-success">
-                    <a href="#" data-toggle="modal" data-target="#login">
-                        <font style="font-size: 16px;color: white">登录&nbsp;/&nbsp;注册</font>
-                    </a>
-                </span>
-            </li>
-            <li style="margin-top: 10px">
-                <a href="#"><img
-                        src="${pageContext.request.contextPath}/view/images/photo.jpg"
-                        style="width: 30px;border-radius: 50%;">
-                </a>
+            <li id="loginLi">
             </li>
         </ul>
     </nav>

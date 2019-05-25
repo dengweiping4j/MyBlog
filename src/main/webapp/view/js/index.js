@@ -1,6 +1,7 @@
 var url = '/MyBlog/article';
 $(function () {
     page(1);
+    checkLogin();
 });
 
 //文章列表加载，分页控制

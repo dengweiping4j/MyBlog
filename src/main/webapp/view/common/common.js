@@ -1,3 +1,40 @@
+function checkLogin() {
+    if (getCookie("userName") == null) {
+        $("#loginLi").empty();
+        var str = "<a href='#' data-toggle='modal' data-target='#login'>" +
+            "            登录&nbsp;/&nbsp;注册" +
+            "      </a>";
+        $("#loginLi").append(str);
+    } else {
+        $("#loginLi").empty();
+        var str = "<a href='#'><img\n" +
+            "      src='/MyBlog/view/images/photo.jpg'" +
+            "      style='width: 30px;border-radius: 50%;'>" +
+            "    </a>";
+        $("#loginLi").append(str);
+    }
+}
+
+function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    if (arr = document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
+}
+
+function delCookie(name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = getCookie(name);
+    if (cval != null)
+        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+}
+
+function clearCookie() {
+    delCookie("userName");
+}
+
 function Alert(text, type) {
     if (type == undefined) {
         type = 'alert';
@@ -27,33 +64,4 @@ function confirmR() {
 
 function Close() {
     $.DialogByZ.Close();
-};
-
-function Message(text, type) {
-    if (type == undefined) {
-        type = 'info';
-    }
-    switch (type) {
-        case 'info':
-            $.message({
-                message: text,
-                type: 'info'
-            });
-            break;
-        case 'success':
-            $.message(text);
-            break;
-        case 'error':
-            $.message({
-                message: text,
-                type: 'error'
-            });
-            break;
-        case 'warning':
-            $.message({
-                message: text,
-                type: 'warning'
-            });
-            break;
-    }
 };
