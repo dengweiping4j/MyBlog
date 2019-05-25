@@ -93,7 +93,7 @@ public class DateUtil {
                         } else if (nowHour - dateHour <= 6) {
                             return (nowHour - dateHour) + "小时前";
                         }
-                        return "今天 " + date.substring(11);
+                        return "今天 " + date.substring(11,16);
                     } else if (nowDay - dateDay == 1) {
                         return "昨天 " + date.substring(11, 16);
                     } else if (nowDay - dateDay == 2) {

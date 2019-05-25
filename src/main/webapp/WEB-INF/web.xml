@@ -55,6 +55,7 @@
             <url-pattern>*.jsp</url-pattern>
             <!-- 被引入的公共页面 -->
             <include-prelude>/view/common/common.jsp</include-prelude>
+            <include-prelude>/view/login.jsp</include-prelude>
         </jsp-property-group>
     </jsp-config>
 

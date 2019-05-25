@@ -9,12 +9,6 @@
     box-shadow: none;
 }
 
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
-    　border-color: transparent;
-    box-shadow: none;
-}
 
 a:focus {
     　border-color: transparent;
@@ -33,13 +27,7 @@ a:focus {
     　　outline-offset: -2px;
 }
 
-.form-control {
-    border-color: transparent;
-    box-shadow: none;
-}
-
 .form-control:focus {
-    border-color: transparent;
     box-shadow: none;
 }
 

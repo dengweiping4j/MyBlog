@@ -84,7 +84,7 @@
             $("body").append(dislogContainer);
 
             $(".zbox-popup-button").click(function () {
-                var indexs = $(this).attr('index');
+                var indexs = $(this).attr('index.jsp');
                 if (indexs == 0) {
                     //左侧按钮
                     if ($.isFunction(PARAMS.FunL)) {

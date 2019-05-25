@@ -23,13 +23,26 @@
         <div class="logo"><a href="/">博客</a></div>
         <h2 id="mnavh"><span class="navicon"></span></h2>
         <ul id="starlist">
-            <li><a href="index.jsp">首页</a></li>
-            <li><a href="share.html">说说</a></li>
-            <li><a href="list.html">表白墙</a></li>
-            <li><a href="about.html">吐槽</a></li>
-            <li><a href="info.html">树洞</a></li>
-            <li><a href="infopic.html">知言</a></li>
-            <li><a href="gbook.html">留言</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/index.jsp">首页</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/share.html">说说</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/list.html">表白墙</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/about.html">吐槽</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/info.html">树洞</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/infopic.html">知言</a></li>
+            <li><a href="${pageContext.request.contextPath}/view/gbook.html">留言</a></li>
+            <li id="login">
+                <span class="badge badge-success">
+                    <a href="#" data-toggle="modal" data-target="#login">
+                        <font style="font-size: 16px;color: white">登录&nbsp;/&nbsp;注册</font>
+                    </a>
+                </span>
+            </li>
+            <li style="margin-top: 10px">
+                <a href="#"><img
+                        src="${pageContext.request.contextPath}/view/images/photo.jpg"
+                        style="width: 30px;border-radius: 50%;">
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -112,7 +125,8 @@
                     onclick="setTag(4,this,'btn-info','有什么秘密都可以在这里说哦！')">
                 树&nbsp;&nbsp;洞
             </button>
-            <button id="btn5" name="tagBtn" class="btn btn-default " onclick="setTag(5,this,'btn-primary','把你知道的都说出来')">
+            <button id="btn5" name="tagBtn" class="btn btn-default "
+                    onclick="setTag(5,this,'btn-primary','把你知道的都说出来！')">
                 知&nbsp;&nbsp;言
             </button>
         </div>
