@@ -55,11 +55,12 @@
             <url-pattern>*.jsp</url-pattern>
             <!-- 被引入的公共页面 -->
             <include-prelude>/view/common/common.jsp</include-prelude>
+            <include-prelude>/message/index.jsp</include-prelude>
             <include-prelude>/view/login.jsp</include-prelude>
         </jsp-property-group>
     </jsp-config>
 
-    <!--错误页面配置,这里只是简单的配置了一下 -->
+    <!--错误页面配置-->
     <error-page>
         <error-code>404</error-code>
         <location>/view/index.jsp</location>

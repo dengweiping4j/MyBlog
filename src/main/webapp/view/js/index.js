@@ -2,6 +2,31 @@ var url = '/MyBlog/article';
 $(function () {
     page(1);
     checkLogin();
+    var userName = getCookie("userName");
+    $("#about_me").empty();
+    if (userName != undefined && userName != '') {
+        var str = "<ul>" +
+            "                <i><img src='/MyBlog/view/images/" + getCookie("profilePhoto") + "'></i><br><b" +
+            "                        style='font-size: 16px;margin-left: 5px;'>" + userName + "</b>" +
+            "                    <table class='table' style='text-align: center'>" +
+            "                        <tbody>" +
+            "                        <tr>" +
+            "                            <td><a>已发布</a></td>" +
+            "                            <td><a>关注</a></td>" +
+            "                            <td><a>粉丝</a></td>" +
+            "                            <td><a>留言</a></td>" +
+            "                        </tr>" +
+            "                        <tr>" +
+            "                            <td><a><b>25</b></a></td>" +
+            "                            <td><a><b>38</b></a></td>" +
+            "                            <td><a><b>6</b></a></td>" +
+            "                            <td><a><b>8</b></a></td>" +
+            "                        </tr>" +
+            "                        </tbody>" +
+            "                    </table>" +
+            "            </ul>";
+        $("#about_me").append(str);
+    }
 });
 
 //文章列表加载，分页控制
@@ -53,7 +78,7 @@ function page(curPage) {
             $("#main").append(str);
         },
         error: function () {
-            alert("系统异常");
+            message("系统异常", "error");
         }
     });
     //查询文章列表总数
@@ -114,7 +139,7 @@ function page(curPage) {
             }
         },
         error: function () {
-            alert("系统异常");
+            message("系统异常", "error");
         }
     });
 }
@@ -132,7 +157,11 @@ function save() {
     var content = $("#content").val();
     var tag = $("#tag").val();
     if (content != null && content != '') {
-        var data = {'content': content, 'tagKey': tag};
+        var data = {
+            'content': content,
+            'tagKey': tag,
+            'userKey': getCookie("userId")
+        };
         Alert('', 'load');
         $.ajax({
             type: "POST",//方法类型
@@ -141,14 +170,20 @@ function save() {
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(data),
             success: function (result) {
+                if (result.message == "success") {
+                    message('发布成功');
+                } else {
+                    message("发布失败", "error");
+                }
                 Close();
+                $("#content").val("");
                 page(1);
             },
             error: function () {
-                alert("系统异常");
+                message("系统异常", "error");
             }
         });
     } else {
-        Alert("请输入内容！", "auto");
+        message("请输入您要发布的内容", "info");
     }
 }

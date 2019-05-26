@@ -37,30 +37,8 @@
 </header>
 <article>
     <aside class="l_box">
-        <div class="about_me">
-            <%--            <h2>关于匿名社区</h2>--%>
-            <ul>
-                <div><i><img src="${pageContext.request.contextPath}/view/images/photo.jpg"></i><br><b
-                        style="font-size: 16px;margin-left: 5px;">超级管理员</b></div>
-                <div>
-                    <table class="table" style="text-align: center">
-                        <tbody>
-                        <tr>
-                            <td><a>已发布</a></td>
-                            <td><a>关注</a></td>
-                            <td><a>粉丝</a></td>
-                            <td><a>留言</a></td>
-                        </tr>
-                        <tr>
-                            <td><a><b>25</b></a></td>
-                            <td><a><b>38</b></a></td>
-                            <td><a><b>6</b></a></td>
-                            <td><a><b>8</b></a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </ul>
+        <div id="about_me" class="about_me">
+
         </div>
         <div class="search">
             <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
@@ -120,7 +98,7 @@
             </button>
         </div>
         <input type="hidden" id="tag" value="1">
-        <button id="btn" class="btn btn-danger" style="margin-bottom: 20px;width: 80px;float:right" onclick="save()">发&nbsp;&nbsp;表</button>
+        <button id="btn" class="btn btn-danger" style="margin-bottom: 20px;width: 80px;float:right" onclick="save()">发&nbsp;&nbsp;布</button>
     </main>
     <main class="r_box" id="main">
     </main>

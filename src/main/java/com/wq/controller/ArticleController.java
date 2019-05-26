@@ -1,5 +1,7 @@
 package com.wq.controller;
 
+import com.wq.common.Result;
+import com.wq.common.ResultGenerator;
 import com.wq.entity.Article;
 import com.wq.service.ArticleService;
 import net.sf.json.JSONArray;
@@ -60,7 +62,8 @@ public class ArticleController {
      */
     @RequestMapping(value = "/addSave", method = RequestMethod.POST)
     @ResponseBody
-    public int addSave(@RequestBody Article article) {
-        return articleService.addArticle(article);
+    public Result addSave(@RequestBody Article article) {
+        int resultTotal = articleService.addArticle(article);
+        return ResultGenerator.genResult(resultTotal);
     }
 }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wq.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.wq.entity.User">
+        <id column="pkid" jdbcType="VARCHAR" property="pkid"/>
+        <result column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="profile_photo" jdbcType="VARCHAR" property="profilePhoto"/>
+        <result column="user_type" jdbcType="VARCHAR" property="userType"/>
+        <result column="signature" jdbcType="VARCHAR" property="signature"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    pkid, user_id, user_name, password, profile_photo, user_type,signature
+  </sql>
+    <select id="selectByUserId" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(1)
+        from user
+        where user_id = #{userId,jdbcType=VARCHAR}
+    </select>
+    <select id="login" parameterType="User" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        user where user_id=#{userId} and password=#{password} limit 1
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.wq.entity.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                pkid,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="profilePhoto != null">
+                profile_photo,
+            </if>
+            <if test="userType != null">
+                user_type,
+            </if>
+            <if test="signature != null">
+                signature,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                #{pkid,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="profilePhoto != null">
+                #{profilePhoto,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                #{userType,jdbcType=VARCHAR},
+            </if>
+            <if test="signature != null">
+                #{signature,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wq.entity.User">
+        update user
+        <set>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="profilePhoto != null">
+                #{profilePhoto,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                #{userType,jdbcType=VARCHAR},
+            </if>
+            <if test="signature != null">
+                #{signature,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </update>
+</mapper>

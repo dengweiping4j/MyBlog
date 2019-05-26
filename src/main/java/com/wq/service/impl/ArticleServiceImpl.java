@@ -40,9 +40,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public int addArticle(Article article) {
         article.setPkid(UUID.randomUUID().toString());
-        //article.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         article.setCreateTime(new Date());
-        article.setUserKey("admin");//暂时写死
         return articleMapper.insertSelective(article);
     }
 }
