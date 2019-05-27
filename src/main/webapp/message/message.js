@@ -1,6 +1,6 @@
 function message(text, type, position, autoclose) {
     if (autoclose == undefined) {
-        autoclose = 2000;
+        autoclose = 1000;
     }
     if (position == undefined) {
         position = 'top-center';

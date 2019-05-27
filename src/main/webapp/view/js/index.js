@@ -2,29 +2,29 @@ var url = '/MyBlog/article';
 $(function () {
     page(1);
     checkLogin();
-    var userName = getCookie("userName");
+    var userId = getCookie("userId");
     $("#about_me").empty();
-    if (userName != undefined && userName != '') {
+    if (userId != undefined && userId != '') {
         var str = "<ul>" +
-            "                <i><img src='/MyBlog/view/images/" + getCookie("profilePhoto") + "'></i><br><b" +
-            "                        style='font-size: 16px;margin-left: 5px;'>" + userName + "</b>" +
-            "                    <table class='table' style='text-align: center'>" +
-            "                        <tbody>" +
-            "                        <tr>" +
-            "                            <td><a>已发布</a></td>" +
-            "                            <td><a>关注</a></td>" +
-            "                            <td><a>粉丝</a></td>" +
-            "                            <td><a>留言</a></td>" +
-            "                        </tr>" +
-            "                        <tr>" +
-            "                            <td><a><b>25</b></a></td>" +
-            "                            <td><a><b>38</b></a></td>" +
-            "                            <td><a><b>6</b></a></td>" +
-            "                            <td><a><b>8</b></a></td>" +
-            "                        </tr>" +
-            "                        </tbody>" +
-            "                    </table>" +
-            "            </ul>";
+            "      <i><img src='/MyBlog/view/images/" + getCookie("profilePhoto") + "'></i><br><b" +
+            "              style='font-size: 16px;margin-left: 5px;'>" + getCookie("userName") + "</b>" +
+            "          <table class='table' style='text-align: center'>" +
+            "              <tbody>" +
+            "              <tr>" +
+            "                  <td><a>已发布</a></td>" +
+            "                  <td><a>关注</a></td>" +
+            "                  <td><a>粉丝</a></td>" +
+            "                  <td><a>留言</a></td>" +
+            "              </tr>" +
+            "              <tr>" +
+            "                  <td><a><b>25</b></a></td>" +
+            "                  <td><a><b>38</b></a></td>" +
+            "                  <td><a><b>6</b></a></td>" +
+            "                  <td><a><b>8</b></a></td>" +
+            "              </tr>" +
+            "              </tbody>" +
+            "          </table>" +
+            "  </ul>";
         $("#about_me").append(str);
     }
 });
@@ -105,7 +105,7 @@ function page(curPage) {
                     str += "&nbsp;&nbsp;<a onclick='page(" + 1 + ")'>1</a>";
                 }
 
-                if (curPage > 5) {//当前页大于5时则只显示当前页前3条～当前页后3条，以及首页
+                if (curPage > 5) {//当前页大于5时则只显示当前页前3页～当前页后3页，以及首页
                     str += "&nbsp;&nbsp;..."
                     for (var i = curPage - 3; i <= (curPage + 3) && i <= pageNum; i++) {
                         if (i == curPage) {
@@ -154,6 +154,10 @@ function setTag(tag, obj, className, text) {
 }
 
 function save() {
+    if (getCookie("userId") == null || getCookie("userId") == undefined) {
+        message("请先登录！", "warming");
+        return;
+    }
     var content = $("#content").val();
     var tag = $("#tag").val();
     if (content != null && content != '') {

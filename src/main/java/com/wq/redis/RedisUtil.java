@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisUtil {
 
-    private static final String CACHE_NAME = "perfect-ssm-cache:";
+    private static final String CACHE_NAME = "myblog-cache:";
     // 过期时间
     private static final int EXPIRE_TIME = 3000;
 
