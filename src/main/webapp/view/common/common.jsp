@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="${pageContext.request.contextPath}/bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/bootstrap-4.3.1/css/my.css" rel="stylesheet">
+    <!-- 图标样式 -->
+    <link href="${pageContext.request.contextPath}/iconClass/css/font-awesome.min.css" rel="stylesheet">
     <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
     <script src="${pageContext.request.contextPath}/view/js/jquery.min.js" type="text/javascript"></script>
     <%--    <script src="${pageContext.request.contextPath}/jquery/jquery-3.1.1.min.js" type="text/javascript"></script>--%>

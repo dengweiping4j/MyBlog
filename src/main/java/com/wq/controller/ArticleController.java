@@ -3,6 +3,7 @@ package com.wq.controller;
 import com.wq.common.Result;
 import com.wq.common.ResultGenerator;
 import com.wq.entity.Article;
+import com.wq.entity.ArticleExpand;
 import com.wq.service.ArticleService;
 import com.wq.util.StringUtil;
 import net.sf.json.JSONArray;
@@ -69,4 +70,15 @@ public class ArticleController {
         int resultTotal = articleService.addArticle(article);
         return ResultGenerator.genResult(resultTotal);
     }
+
+    /**
+     * 点赞
+     */
+    @RequestMapping(value = "/upHand", method = RequestMethod.POST)
+    @ResponseBody
+    public Result upHand(@RequestBody ArticleExpand articleExpand) {
+        int resultTotal = articleService.upHand(articleExpand);
+        return ResultGenerator.genResult(resultTotal);
+    }
+
 }

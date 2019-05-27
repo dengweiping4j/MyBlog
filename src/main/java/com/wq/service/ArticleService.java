@@ -1,6 +1,7 @@
 package com.wq.service;
 
 import com.wq.entity.Article;
+import com.wq.entity.ArticleExpand;
 
 import java.util.List;
 import java.util.Map;
@@ -14,4 +15,6 @@ public interface ArticleService {
     String findArticleTotal();
 
     int addArticle(Article article);
+
+    int upHand(ArticleExpand articleExpand);
 }

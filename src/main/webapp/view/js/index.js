@@ -71,6 +71,10 @@ function page(curPage) {
                     "               <h4>" + value.createTime + "</h4>" +
                     "          </div>" +
                     "          <p>" + value.content + "</p>" +
+                    "           <a class='fa fa-eye' style='margin-left: -20px;float: left'>&nbsp;阅读：30次</a>" +
+                    "           <a class='fa fa-comment-o' style='margin-right: 10px;float: right' onclick='comment()'>&nbsp;3</a>" +
+                    "           <a class='fa fa-hand-pointer-o' style='margin-right: 10px;float: right' onclick='upHand()'>&nbsp;6</a>" +
+                    "           <span id='articleId' style='display: none'>" + value.pkid + "</span>" +
                     "      </div>" +
                     " </li>";
             });
@@ -191,4 +195,30 @@ function save() {
     } else {
         message("请输入您要发布的内容", "info");
     }
+}
+
+function upHand() {
+    var articleKey = $("#articleId").html();
+    var userKey = getCookie("userId");
+    if (userKey == null || userKey == undefined) {
+        message("请先登录", "warming");
+        return;
+    }
+    var data = {"articleKey": articleKey, "userKey": userKey};
+    if (articleKey != undefined && articleKey != null) {
+        $.ajax({
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            contentType: "application/json; charset=utf-8",
+            url: url + "/upHand",//url
+            data: JSON.stringify(data),
+            success: function () {
+                message("谢谢点赞！")
+            }
+        });
+    }
+}
+
+function comment() {
+    alert($("#articleId").html());
 }

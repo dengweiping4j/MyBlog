@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wq.mapper.ArticleExpandMapper">
+    <resultMap id="BaseResultMap" type="com.wq.entity.ArticleExpand">
+        <id column="pkid" jdbcType="VARCHAR" property="pkid"/>
+        <result column="article_key" jdbcType="VARCHAR" property="articleKey"/>
+        <result column="user_key" jdbcType="VARCHAR" property="userKey"/>
+        <result column="action" jdbcType="INTEGER" property="action"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    pkid, article_key, user_key, action, content, create_time
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from article_expand
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </select>
+    <select id="selectUpHand" parameterType="Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from article_expand
+        where article_key = #{articleKey,jdbcType=VARCHAR} and user_key=#{userKey,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from article_expand
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </delete>
+    <delete id="delete" parameterType="java.lang.String">
+    delete from article_expand
+    where article_key = #{articleKey,jdbcType=VARCHAR} and user_key=#{userKey,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.wq.entity.ArticleExpand">
+    insert into article_expand (pkid, article_key, user_key, 
+      action, content, create_time
+      )
+    values (#{pkid,jdbcType=VARCHAR}, #{articleKey,jdbcType=VARCHAR}, #{userKey,jdbcType=VARCHAR}, 
+      #{action,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.wq.entity.ArticleExpand">
+        insert into article_expand
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                pkid,
+            </if>
+            <if test="articleKey != null">
+                article_key,
+            </if>
+            <if test="userKey != null">
+                user_key,
+            </if>
+            <if test="action != null">
+                action,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                #{pkid,jdbcType=VARCHAR},
+            </if>
+            <if test="articleKey != null">
+                #{articleKey,jdbcType=VARCHAR},
+            </if>
+            <if test="userKey != null">
+                #{userKey,jdbcType=VARCHAR},
+            </if>
+            <if test="action != null">
+                #{action,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wq.entity.ArticleExpand">
+        update article_expand
+        <set>
+            <if test="articleKey != null">
+                article_key = #{articleKey,jdbcType=VARCHAR},
+            </if>
+            <if test="userKey != null">
+                user_key = #{userKey,jdbcType=VARCHAR},
+            </if>
+            <if test="action != null">
+                action = #{action,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.wq.entity.ArticleExpand">
+    update article_expand
+    set article_key = #{articleKey,jdbcType=VARCHAR},
+      user_key = #{userKey,jdbcType=VARCHAR},
+      action = #{action,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </update>
+</mapper>

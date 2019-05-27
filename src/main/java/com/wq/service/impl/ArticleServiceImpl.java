@@ -1,6 +1,8 @@
 package com.wq.service.impl;
 
 import com.wq.entity.Article;
+import com.wq.entity.ArticleExpand;
+import com.wq.mapper.ArticleExpandMapper;
 import com.wq.mapper.ArticleMapper;
 import com.wq.service.ArticleService;
 import com.wq.util.DateUtil;
@@ -17,6 +19,8 @@ import java.util.*;
 public class ArticleServiceImpl implements ArticleService {
     @Resource
     private ArticleMapper articleMapper;
+    @Resource
+    private ArticleExpandMapper articleExpandMapper;
 
     @Override
     public List<Map<String, Object>> findAllArticle(Map<String, Object> map) {
@@ -42,5 +46,19 @@ public class ArticleServiceImpl implements ArticleService {
         article.setPkid(UUID.randomUUID().toString());
         article.setCreateTime(new Date());
         return articleMapper.insertSelective(article);
+    }
+
+    @Override
+    public int upHand(ArticleExpand articleExpand) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("articleKey", articleExpand.getArticleKey());
+        map.put("userKey", articleExpand.getUserKey());
+        ArticleExpand result = articleExpandMapper.selectUpHand(map);
+        if (result != null) {//如果已存在，则本次作为取消点赞删除
+            return articleExpandMapper.delete(articleExpand);
+        }
+        articleExpand.setPkid(UUID.randomUUID().toString());
+        articleExpand.setAction(1);
+        return articleExpandMapper.insertSelective(articleExpand);
     }
 }
