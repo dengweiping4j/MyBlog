@@ -27,6 +27,12 @@ $(function () {
             "  </ul>";
         $("#about_me").append(str);
     }
+
+    $(function () {//显示三行 多余隐藏 点击展开
+        $('.innerCtn').click(function () {
+            $(this).children(0).removeClass('mui-ellipsis-3');
+        });
+    });
 });
 
 //文章列表加载，分页控制
@@ -42,7 +48,6 @@ function page(curPage) {
             var str = "";
             var tagLabel = "";
             $.each(data, function (n, value) {
-
                 switch (value.tagKey) {
                     case '1':
                         tagLabel = "<span class='badge badge-pill badge-success' style='clear: right;float: right'><font size='2px'>" + value.tagName + "</font></span>";
@@ -160,7 +165,9 @@ function save() {
     }
     var content = $("#content").val();
     var tag = $("#tag").val();
+    console.log(content);
     if (content != null && content != '') {
+        //content = str.replace(/<\/?[^>]*>/g,''); //去除HTML tag
         var data = {
             'content': content,
             'tagKey': tag,

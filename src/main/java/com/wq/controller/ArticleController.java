@@ -4,6 +4,7 @@ import com.wq.common.Result;
 import com.wq.common.ResultGenerator;
 import com.wq.entity.Article;
 import com.wq.service.ArticleService;
+import com.wq.util.StringUtil;
 import net.sf.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -63,6 +64,8 @@ public class ArticleController {
     @RequestMapping(value = "/addSave", method = RequestMethod.POST)
     @ResponseBody
     public Result addSave(@RequestBody Article article) {
+        String str = StringUtil.replaceStr(article.getContent());
+        article.setContent(str);
         int resultTotal = articleService.addArticle(article);
         return ResultGenerator.genResult(resultTotal);
     }

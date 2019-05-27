@@ -26,6 +26,7 @@ public class UserController {
     @RequestMapping(value = "addUser", method = RequestMethod.POST)
     @ResponseBody
     public Result save(@RequestBody User user) {
+        if (checkUser(user)) return ResultGenerator.genFailResult("注册失败<br>您输入的内容含有非法字符！");
         int preUser = userService.selectByUserId(user.getUserId());
         if (preUser != 0) {
             return ResultGenerator.genFailResult("该用户已存在，请重新输入！");
@@ -36,7 +37,7 @@ public class UserController {
             data.put("currentUser", resulrUser);
             return ResultGenerator.genSuccessResult(data);
         }
-        return ResultGenerator.genFailResult("注册失败，请与系统管理员联系！");
+        return ResultGenerator.genFailResult("注册失败<br>请与系统管理员联系！");
     }
 
     /**
@@ -45,6 +46,7 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public Result login(@RequestBody User user) {
+        if (checkUser(user)) return ResultGenerator.genFailResult("登录失败<br>您输入的内容含有非法字符！");
         User resultUser = userService.login(user);
         if (resultUser == null) {
             return ResultGenerator.genFailResult("账号或密码错误,请重新登录！");
@@ -54,5 +56,19 @@ public class UserController {
             data.put("currentUser", resultUser);
             return ResultGenerator.genSuccessResult(data);
         }
+    }
+
+    //校验输入的用户信息
+    private boolean checkUser(@RequestBody User user) {
+        String userId = user.getUserId();
+        String userName = user.getUserName();
+        String password = user.getPassword();
+        if (!userId.matches("[a-zA-Z0-9_]*") || !password.matches("[a-zA-Z0-9_]*")) {
+            return true;
+        }
+        if (userId.length() < 6 || userId.length() > 15 || userName.length() > 40 || password.length() < 6 || password.length() > 40) {
+            return false;
+        }
+        return false;
     }
 }

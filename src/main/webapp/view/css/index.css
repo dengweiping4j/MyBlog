@@ -144,7 +144,7 @@
     transition: all 0.5s;
 }
 
-.r_box div p {
+.r_box div p pre{
     margin-top: 10px;
     margin-left: -25px;
     line-height: 22px;
@@ -152,7 +152,7 @@
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 5;
 }
 
 .r_box li a:hover img {
