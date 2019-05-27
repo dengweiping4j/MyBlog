@@ -59,7 +59,7 @@ public class UserController {
     }
 
     //校验输入的用户信息
-    private boolean checkUser(@RequestBody User user) {
+    private boolean checkUser(User user) {
         String userId = user.getUserId();
         String userName = user.getUserName();
         String password = user.getPassword();
