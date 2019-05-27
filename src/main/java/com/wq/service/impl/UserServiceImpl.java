@@ -27,7 +27,8 @@ public class UserServiceImpl implements UserService {
         user.setUserType("3");
         String MD5pwd = MD5Util.MD5Encode(user.getPassword(), "UTF-8");
         user.setPassword(MD5pwd);
-        if (userMapper.insert(user) > 0) {
+        int total = userMapper.insert(user);
+        if (total > 0) {
             return user;
         }
         return null;

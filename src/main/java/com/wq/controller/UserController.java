@@ -30,9 +30,10 @@ public class UserController {
         if (preUser != 0) {
             return ResultGenerator.genFailResult("该用户已存在，请重新输入！");
         }
-        if (userService.addUser(user) != null) {
+        User resulrUser = userService.addUser(user);
+        if (resulrUser != null) {
             Map data = new HashMap();
-            data.put("currentUser", userService.addUser(user));
+            data.put("currentUser", resulrUser);
             return ResultGenerator.genSuccessResult(data);
         }
         return ResultGenerator.genFailResult("注册失败，请与系统管理员联系！");
