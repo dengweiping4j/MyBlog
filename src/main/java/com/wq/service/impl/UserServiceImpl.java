@@ -4,6 +4,7 @@ import com.wq.entity.User;
 import com.wq.mapper.UserMapper;
 import com.wq.service.UserService;
 import com.wq.util.MD5Util;
+import com.wq.util.StringUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -27,6 +28,9 @@ public class UserServiceImpl implements UserService {
         user.setUserType("3");
         String MD5pwd = MD5Util.MD5Encode(user.getPassword(), "UTF-8");
         user.setPassword(MD5pwd);
+        if (StringUtil.isEmpty(user.getProfilePhoto())) {
+            user.setProfilePhoto("photo.jpg");
+        }
         int total = userMapper.insert(user);
         if (total > 0) {
             return user;

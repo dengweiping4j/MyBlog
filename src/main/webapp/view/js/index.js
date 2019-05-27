@@ -27,12 +27,6 @@ $(function () {
             "  </ul>";
         $("#about_me").append(str);
     }
-
-    $(function () {//显示三行 多余隐藏 点击展开
-        $('.innerCtn').click(function () {
-            $(this).children(0).removeClass('mui-ellipsis-3');
-        });
-    });
 });
 
 //文章列表加载，分页控制
@@ -71,8 +65,8 @@ function page(curPage) {
                     "      </a>" +
                     "      <div class='media-body'>" +
                     "          <div>" + tagLabel +
-                    "               <h3 class='media-heading'>" +
-                    "                   <a style='color: #1a5f2f;'>" + value.userName + "</a>" +
+                    "               <h3>" +
+                    "                   <a>" + value.userName + "</a>" +
                     "               </h3>" +
                     "               <h4>" + value.createTime + "</h4>" +
                     "          </div>" +
