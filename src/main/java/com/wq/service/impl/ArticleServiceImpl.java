@@ -22,6 +22,14 @@ public class ArticleServiceImpl implements ArticleService {
     @Resource
     private ArticleExpandMapper articleExpandMapper;
 
+    /*
+     * @Description 查询文章列表
+     * @param [map]
+     * @return java.util.List<java.util.Map<java.lang.String,java.lang.Object>>
+     * @throws
+     * @author dengweiping
+     * @date 2019/5/28 17:46
+     */
     @Override
     public List<Map<String, Object>> findAllArticle(Map<String, Object> map) {
         List<Map<String, Object>> allArticle = articleMapper.findAllArticle(map);
@@ -41,6 +49,14 @@ public class ArticleServiceImpl implements ArticleService {
         return articleMapper.findArticleTotal();
     }
 
+    /*
+     * @Description 添加文章
+     * @param [article]
+     * @return int
+     * @throws
+     * @author dengweiping
+     * @date 2019/5/28 17:46
+     */
     @Override
     public int addArticle(Article article) {
         article.setPkid(UUID.randomUUID().toString());
@@ -67,6 +83,14 @@ public class ArticleServiceImpl implements ArticleService {
         return articleExpandMapper.insertActive(articleExpand);
     }
 
+    /*
+     * @Description 获取指定用户点赞状态
+     * @param [articleExpand]
+     * @return int
+     * @throws
+     * @author dengweiping
+     * @date 2019/5/28 17:45
+     */
     @Override
     public int selectHandUpState(ArticleExpand articleExpand) {
         Map<String, Object> map = new HashMap<>();
@@ -75,6 +99,14 @@ public class ArticleServiceImpl implements ArticleService {
         return articleExpandMapper.selectUpHand(map) == null ? 0 : 1;
     }
 
+    /*
+     * @Description 获取指定文章点赞数
+     * @param [articleKey]
+     * @return int
+     * @throws
+     * @author dengweiping
+     * @date 2019/5/28 17:45
+     */
     @Override
     public int selectHandUpNum(String articleKey) {
         return articleExpandMapper.selectHandUpNum(articleKey);

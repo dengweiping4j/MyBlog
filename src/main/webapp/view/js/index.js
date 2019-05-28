@@ -91,7 +91,7 @@ function selectPage(curPage) {
                     "          <p>" + value.content + "</p>" +
                     "           <a class='fa fa-eye' style='margin-left: -20px;float: left;'>&nbsp;阅读：30次</a>" +
                     "           <a class='fa fa-comment-o' style='margin-right: 10px;float: right;' onclick='comment()'>&nbsp;3</a>" +
-                    "           <a id='" + value.pkid + "' name='handUp' class='fa fa-hand-pointer-o' style='margin-right: 10px;float: right;' onclick='upHand(this)' value='" + value.pkid + "'>&nbsp;0</a>" +
+                    "           <a id='" + value.pkid + "' name='handUp' class='fa fa-hand-pointer-o' style='margin-right: 10px;float: right;' onclick='upHand(this)' value='" + value.pkid + "'>&nbsp;"+value.handupnum+"</a>" +
                     "      </div>" +
                     " </li>";
             });

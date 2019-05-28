@@ -21,25 +21,42 @@
   </sql>
     <select id="findAllArticle" parameterType="Map" resultType="java.util.HashMap">
         SELECT
-        t.pkid,
-        t.content,
-        t.tag_key tagKey,
-        (
+            t.pkid,
+            t.content,
+            t.tag_key tagKey,
+            (
         CASE
-                WHEN t.tag_key = '1' THEN '说说'
-                WHEN t.tag_key = '2' THEN '表白'
-                WHEN t.tag_key = '3' THEN '吐槽'
-                WHEN t.tag_key = '4' THEN '树洞'
-                WHEN t.tag_key = '5' THEN '知言'
-                else '' END) tagName,
-        t1.user_name AS userName,
-	    date_format(t.create_time,'%Y-%m-%d %H:%i:%s')  createTime,
-	    t1.profile_photo profilePhoto
+
+            WHEN t.tag_key = '1' THEN
+            '说说'
+            WHEN t.tag_key = '2' THEN
+            '表白'
+            WHEN t.tag_key = '3' THEN
+            '吐槽'
+            WHEN t.tag_key = '4' THEN
+            '树洞'
+            WHEN t.tag_key = '5' THEN
+            '知言' ELSE ''
+        END
+            ) tagName,
+            t1.user_name AS userName,
+            date_format( t.create_time, '%Y-%m-%d %H:%i:%s' ) createTime,
+            t1.profile_photo profilePhoto ,
+            count(ae.article_key) as handupnum
         FROM
-        article t
-        LEFT JOIN USER t1 ON t.user_key = t1.user_id
+            article t
+            LEFT JOIN USER t1 ON t.user_key = t1.user_id
+            LEFT JOIN article_expand ae ON t.pkid = ae.article_key
+        GROUP BY
+            t.pkid,
+            t.content,
+            t.tag_key,
+            t1.user_name,
+            t.create_time,
+            t1.profile_photo,
+            ae.article_key
         ORDER BY
-        create_time DESC
+        t.create_time DESC
         LIMIT #{start},#{size}
   </select>
     <select id="findArticleTotal" resultType="String">
