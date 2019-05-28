@@ -2,7 +2,16 @@ var url = '/MyBlog/article';
 $(function () {
     page(1);
     checkLogin();
-    var userId = getCookie("userId");
+    findAboutme(getCookie("userId"));
+    //加载点赞状态和点赞数
+    var handUpArr = $("a[name='handUp']");
+    for (var x = 0; x < handUpArr.length; x++) {
+        selectHandUpState($(handUpArr[x]).attr("value"))
+    }
+});
+
+//加载登录人个人信息
+function findAboutme(userId) {
     $("#about_me").empty();
     if (userId != undefined && userId != '') {
         var str = "<ul>" +
@@ -27,10 +36,18 @@ $(function () {
             "  </ul>";
         $("#about_me").append(str);
     }
-});
+}
 
 //文章列表加载，分页控制
 function page(curPage) {
+    //查询文章列表
+    selectPage(curPage);
+    //查询文章列表总数
+    selectPageNum();
+}
+
+//加载文章列表
+function selectPage(curPage) {
     $("#main").empty();
     $.ajax({
         type: "POST",//方法类型
@@ -59,6 +76,7 @@ function page(curPage) {
                         tagLabel = "<span class='badge badge-pill badge-primary' style='clear: right;float: right'><font size='2px'>" + value.tagName + "</font></span>";
                         break;
                 }
+                //判断点赞状态
                 str += " <li class='media'>" +
                     "      <a class='media-left media-bottom' href='#'>" +
                     "          <img src='/MyBlog/view/images/" + value.profilePhoto + "'" +
@@ -71,10 +89,9 @@ function page(curPage) {
                     "               <h4>" + value.createTime + "</h4>" +
                     "          </div>" +
                     "          <p>" + value.content + "</p>" +
-                    "           <a class='fa fa-eye' style='margin-left: -20px;float: left'>&nbsp;阅读：30次</a>" +
-                    "           <a class='fa fa-comment-o' style='margin-right: 10px;float: right' onclick='comment()'>&nbsp;3</a>" +
-                    "           <a class='fa fa-hand-pointer-o' style='margin-right: 10px;float: right' onclick='upHand()'>&nbsp;6</a>" +
-                    "           <span id='articleId' style='display: none'>" + value.pkid + "</span>" +
+                    "           <a class='fa fa-eye' style='margin-left: -20px;float: left;'>&nbsp;阅读：30次</a>" +
+                    "           <a class='fa fa-comment-o' style='margin-right: 10px;float: right;' onclick='comment()'>&nbsp;3</a>" +
+                    "           <a id='" + value.pkid + "' name='handUp' class='fa fa-hand-pointer-o' style='margin-right: 10px;float: right;' onclick='upHand(this)' value='" + value.pkid + "'>&nbsp;0</a>" +
                     "      </div>" +
                     " </li>";
             });
@@ -84,7 +101,10 @@ function page(curPage) {
             message("系统异常", "error");
         }
     });
-    //查询文章列表总数
+}
+
+//加载文章列表总数
+function selectPageNum() {
     $.ajax({
         type: "POST",//方法类型
         async: false,
@@ -147,6 +167,35 @@ function page(curPage) {
     });
 }
 
+//加载当前用户对列表文章点赞状态
+function selectHandUpState(articleKey) {
+    var userKey = getCookie("userId");
+    var data = {"userKey": userKey, "articleKey": articleKey};
+    if (userKey == null || userKey == undefined) {
+        return 0;
+    } else {
+        $.ajax({
+            type: "POST",//方法类型
+            async: false,
+            dataType: "json",//预期服务器返回的数据类型
+            url: url + "/selectHandUpState",//url
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            success: function (result) {
+                var handStyle = "margin-right: 10px;float: right;";
+                if (result.data.resultTotal == 1) {
+                    handStyle += "color:red;";
+                }
+                $("a[id=" + articleKey + "]").attr("style", handStyle);
+                $("a[id=" + articleKey + "]").text(" "+result.data.handUpNum);
+            },
+            error: function () {
+                message("系统异常", "error");
+            }
+        });
+    }
+}
+
 //设置标签值
 function setTag(tag, obj, className, text) {
     $("button[name=tagBtn]").removeClass();
@@ -156,6 +205,7 @@ function setTag(tag, obj, className, text) {
     $("#content").attr('placeholder', text);
 }
 
+//保存发表文章
 function save() {
     if (getCookie("userId") == null || getCookie("userId") == undefined) {
         message("请先登录！", "warming");
@@ -165,7 +215,6 @@ function save() {
     var tag = $("#tag").val();
     console.log(content);
     if (content != null && content != '') {
-        //content = str.replace(/<\/?[^>]*>/g,''); //去除HTML tag
         var data = {
             'content': content,
             'tagKey': tag,
@@ -197,8 +246,8 @@ function save() {
     }
 }
 
-function upHand() {
-    var articleKey = $("#articleId").html();
+function upHand(obj) {
+    var articleKey = $(obj).attr('value');
     var userKey = getCookie("userId");
     if (userKey == null || userKey == undefined) {
         message("请先登录", "warming");
@@ -213,7 +262,7 @@ function upHand() {
             url: url + "/upHand",//url
             data: JSON.stringify(data),
             success: function () {
-                message("谢谢点赞！")
+                selectHandUpState(articleKey);//点击后重新加载当前用户点赞状态
             }
         });
     }

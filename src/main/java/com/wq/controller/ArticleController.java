@@ -72,6 +72,22 @@ public class ArticleController {
     }
 
     /**
+     * 获取用户点赞状态以及文章点赞数
+     */
+    @RequestMapping(value = "/selectHandUpState", method = RequestMethod.POST)
+    @ResponseBody
+    public Result selectHandUpState(@RequestBody ArticleExpand articleExpand) {
+        int resultTotal = articleService.selectHandUpState(articleExpand);
+        int handUpNum=articleService.selectHandUpNum(articleExpand.getArticleKey());
+        Result result = ResultGenerator.genSuccessResult();
+        Map<String,Object> map=new HashMap<>();
+        map.put("resultTotal",resultTotal);
+        map.put("handUpNum",handUpNum);
+        result.setData(map);
+        return result;
+    }
+
+    /**
      * 点赞
      */
     @RequestMapping(value = "/upHand", method = RequestMethod.POST)

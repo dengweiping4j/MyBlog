@@ -21,4 +21,6 @@ public interface ArticleExpandMapper {
     ArticleExpand selectUpHand(Map<String, Object> map);
 
     int insert(ArticleExpand articleExpand);
+
+    int selectHandUpNum(String articleKey);
 }

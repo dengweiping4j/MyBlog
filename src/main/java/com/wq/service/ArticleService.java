@@ -17,4 +17,8 @@ public interface ArticleService {
     int addArticle(Article article);
 
     int upHand(ArticleExpand articleExpand);
+
+    int selectHandUpState(ArticleExpand articleExpand);
+
+    int selectHandUpNum(String articleKey);
 }

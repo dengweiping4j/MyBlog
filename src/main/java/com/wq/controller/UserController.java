@@ -60,9 +60,9 @@ public class UserController {
 
     //校验输入的用户信息
     private boolean checkUser(User user) {
-        String userId = user.getUserId();
-        String userName = user.getUserName();
-        String password = user.getPassword();
+        String userId = user.getUserId() == null ? "" : user.getUserId();
+        String userName = user.getUserName() == null ? "" : user.getUserName();
+        String password = user.getPassword() == null ? "" : user.getPassword();
         if (!userId.matches("[a-zA-Z0-9_]*") || !password.matches("[a-zA-Z0-9_]*")) {
             return true;
         }

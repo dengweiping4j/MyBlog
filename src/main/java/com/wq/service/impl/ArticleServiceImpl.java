@@ -48,18 +48,35 @@ public class ArticleServiceImpl implements ArticleService {
         return articleMapper.insertSelective(article);
     }
 
+    /*
+     * @Description 文章点赞功能，第一次点击会向文章扩展表插入一条点赞数据，再次点击时根据文章id和操作人id删除对应点赞数据
+     * @param [articleExpand]
+     * @return int
+     * @throws
+     * @author dengweiping
+     * @date 2019/5/28 13:57
+     */
     @Override
     public int upHand(ArticleExpand articleExpand) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("articleKey", articleExpand.getArticleKey());
-        map.put("userKey", articleExpand.getUserKey());
-        ArticleExpand result = articleExpandMapper.selectUpHand(map);
-        if (result != null) {//如果已存在，则本次作为取消点赞删除
+        if (selectHandUpState(articleExpand) == 1) {//如果已存在，则本次作为取消点赞删除
             return articleExpandMapper.delete(articleExpand);
         }
         articleExpand.setPkid(UUID.randomUUID().toString());
         articleExpand.setAction(1);
         articleExpand.setCreateTime(new Date());
         return articleExpandMapper.insertActive(articleExpand);
+    }
+
+    @Override
+    public int selectHandUpState(ArticleExpand articleExpand) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("articleKey", articleExpand.getArticleKey());
+        map.put("userKey", articleExpand.getUserKey());
+        return articleExpandMapper.selectUpHand(map) == null ? 0 : 1;
+    }
+
+    @Override
+    public int selectHandUpNum(String articleKey) {
+        return articleExpandMapper.selectHandUpNum(articleKey);
     }
 }
