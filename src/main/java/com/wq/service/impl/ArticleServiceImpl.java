@@ -78,7 +78,6 @@ public class ArticleServiceImpl implements ArticleService {
             return articleExpandMapper.delete(articleExpand);
         }
         articleExpand.setPkid(UUID.randomUUID().toString());
-        articleExpand.setAction(1);
         articleExpand.setCreateTime(new Date());
         return articleExpandMapper.insertActive(articleExpand);
     }

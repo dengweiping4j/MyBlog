@@ -256,7 +256,7 @@ function upHand(obj) {
         message("请先登录", "warming");
         return;
     }
-    var data = {"articleKey": articleKey, "userKey": userKey};
+    var data = {"articleKey": articleKey, "userKey": userKey, "action": 1};
     if (articleKey != undefined && articleKey != null) {
         $.ajax({
             type: "POST",//方法类型
