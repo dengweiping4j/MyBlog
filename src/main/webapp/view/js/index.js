@@ -1,7 +1,10 @@
 var url = '/MyBlog/article';
 $(function () {
+    //加载文章列表
     page(1);
+    //检查登录状态
     checkLogin();
+    //根据登录状态加载“关于我”模块
     findAboutme(getCookie("userId"));
     //加载点赞状态和点赞数
     var handUpArr = $("a[name='handUp']");
@@ -91,7 +94,7 @@ function selectPage(curPage) {
                     "          <p>" + value.content + "</p>" +
                     "           <a class='fa fa-eye' style='margin-left: -20px;float: left;'>&nbsp;阅读：30次</a>" +
                     "           <a class='fa fa-comment-o' style='margin-right: 10px;float: right;' onclick='comment()'>&nbsp;3</a>" +
-                    "           <a id='" + value.pkid + "' name='handUp' class='fa fa-hand-pointer-o' style='margin-right: 10px;float: right;' onclick='upHand(this)' value='" + value.pkid + "'>&nbsp;"+value.handupnum+"</a>" +
+                    "           <a id='" + value.pkid + "' name='handUp' class='fa fa-hand-pointer-o' style='margin-right: 10px;float: right;' onclick='upHand(this)' value='" + value.pkid + "'>&nbsp;" + value.handupnum + "</a>" +
                     "      </div>" +
                     " </li>";
             });
@@ -187,7 +190,7 @@ function selectHandUpState(articleKey) {
                     handStyle += "color:red;";
                 }
                 $("a[id=" + articleKey + "]").attr("style", handStyle);
-                $("a[id=" + articleKey + "]").text(" "+result.data.handUpNum);
+                $("a[id=" + articleKey + "]").text(" " + result.data.handUpNum);
             },
             error: function () {
                 message("系统异常", "error");
