@@ -10,17 +10,15 @@ public interface ArticleExpandMapper {
 
     int deleteByPrimaryKey(String pkid);
 
-    int insert(ArticleExpand record);
-
-    int insertSelective(ArticleExpand record);
+    int insertActive(ArticleExpand record);
 
     ArticleExpand selectByPrimaryKey(String pkid);
 
-    int updateByPrimaryKeySelective(ArticleExpand record);
-
-    int updateByPrimaryKey(ArticleExpand record);
+    int update(ArticleExpand record);
 
     int delete(ArticleExpand articleExpand);
 
     ArticleExpand selectUpHand(Map<String, Object> map);
+
+    int insert(ArticleExpand articleExpand);
 }

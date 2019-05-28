@@ -33,14 +33,14 @@
     where article_key = #{articleKey,jdbcType=VARCHAR} and user_key=#{userKey,jdbcType=VARCHAR}
   </delete>
     <insert id="insert" parameterType="com.wq.entity.ArticleExpand">
-    insert into article_expand (pkid, article_key, user_key, 
-      action, content, create_time
-      )
-    values (#{pkid,jdbcType=VARCHAR}, #{articleKey,jdbcType=VARCHAR}, #{userKey,jdbcType=VARCHAR}, 
-      #{action,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
-      )
-  </insert>
-    <insert id="insertSelective" parameterType="com.wq.entity.ArticleExpand">
+        insert into article_expand (pkid, article_key, user_key,
+          action, content, create_time
+          )
+        values (#{pkid,jdbcType=VARCHAR}, #{articleKey,jdbcType=VARCHAR}, #{userKey,jdbcType=VARCHAR},
+          #{action,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+          )
+      </insert>
+    <insert id="insertActive" parameterType="com.wq.entity.ArticleExpand">
         insert into article_expand
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pkid != null">
@@ -83,7 +83,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.wq.entity.ArticleExpand">
+    <update id="update" parameterType="com.wq.entity.ArticleExpand">
         update article_expand
         <set>
             <if test="articleKey != null">
@@ -104,13 +104,13 @@
         </set>
         where pkid = #{pkid,jdbcType=VARCHAR}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.wq.entity.ArticleExpand">
-    update article_expand
-    set article_key = #{articleKey,jdbcType=VARCHAR},
-      user_key = #{userKey,jdbcType=VARCHAR},
-      action = #{action,jdbcType=INTEGER},
-      content = #{content,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
-    where pkid = #{pkid,jdbcType=VARCHAR}
-  </update>
+<!--    <update id="updateByPrimaryKey" parameterType="com.wq.entity.ArticleExpand">-->
+<!--    update article_expand-->
+<!--    set article_key = #{articleKey,jdbcType=VARCHAR},-->
+<!--      user_key = #{userKey,jdbcType=VARCHAR},-->
+<!--      action = #{action,jdbcType=INTEGER},-->
+<!--      content = #{content,jdbcType=VARCHAR},-->
+<!--      create_time = #{createTime,jdbcType=TIMESTAMP}-->
+<!--    where pkid = #{pkid,jdbcType=VARCHAR}-->
+<!--  </update>-->
 </mapper>
