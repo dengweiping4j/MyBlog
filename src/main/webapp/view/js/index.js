@@ -249,6 +249,7 @@ function save() {
     }
 }
 
+//点赞事件
 function upHand(obj) {
     var articleKey = $(obj).attr('value');
     var userKey = getCookie("userId");

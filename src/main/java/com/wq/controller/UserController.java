@@ -5,10 +5,7 @@ import com.wq.common.ResultGenerator;
 import com.wq.entity.User;
 import com.wq.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -19,6 +16,24 @@ import java.util.Map;
 public class UserController {
     @Resource
     private UserService userService;
+
+    /**
+     * 登陆
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
+    public Result login(@RequestBody User user) {
+        if (checkUser(user)) return ResultGenerator.genFailResult("登录失败<br>您输入的内容含有非法字符！");
+        User resultUser = userService.login(user);
+        if (resultUser == null) {
+            return ResultGenerator.genFailResult("账号或密码错误,请重新登录！");
+        } else {
+            resultUser.setPassword("PASSWORD");
+            Map data = new HashMap();
+            data.put("currentUser", resultUser);
+            return ResultGenerator.genSuccessResult(data);
+        }
+    }
 
     /*
      *添加用户
@@ -40,22 +55,14 @@ public class UserController {
         return ResultGenerator.genFailResult("注册失败<br>请与系统管理员联系！");
     }
 
-    /**
-     * 登陆
+    /*
+     *上传图片
      */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "uploadImg", method = RequestMethod.POST)
     @ResponseBody
-    public Result login(@RequestBody User user) {
-        if (checkUser(user)) return ResultGenerator.genFailResult("登录失败<br>您输入的内容含有非法字符！");
-        User resultUser = userService.login(user);
-        if (resultUser == null) {
-            return ResultGenerator.genFailResult("账号或密码错误,请重新登录！");
-        } else {
-            resultUser.setPassword("PASSWORD");
-            Map data = new HashMap();
-            data.put("currentUser", resultUser);
-            return ResultGenerator.genSuccessResult(data);
-        }
+    public Result uploadImg(@RequestBody String imgBase64) {
+        System.out.println(imgBase64);
+        return ResultGenerator.genSuccessResult();
     }
 
     //校验输入的用户信息
@@ -71,4 +78,5 @@ public class UserController {
         }
         return false;
     }
+
 }
