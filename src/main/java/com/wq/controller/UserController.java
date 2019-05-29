@@ -67,13 +67,14 @@ public class UserController {
 
     //校验输入的用户信息
     private boolean checkUser(User user) {
-        String userId = user.getUserId() == null ? "" : user.getUserId();
-        String userName = user.getUserName() == null ? "" : user.getUserName();
-        String password = user.getPassword() == null ? "" : user.getPassword();
+        String userId = user.getUserId();
+        String userName = user.getUserName();
+        String password = user.getPassword();
         if (!userId.matches("[a-zA-Z0-9_]*") || !password.matches("[a-zA-Z0-9_]*")) {
             return true;
         }
-        if (userId.length() < 6 || userId.length() > 15 || userName.length() > 40 || password.length() < 6 || password.length() > 40) {
+        if (userId == null || userName == null || password == null || userId.length() < 6 || userId.length() > 15
+                || userName.length() > 40 || password.length() < 6 || password.length() > 40) {
             return false;
         }
         return false;
