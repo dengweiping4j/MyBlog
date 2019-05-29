@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="format-detection" content="telephone=no">
 
-    <link rel="stylesheet" href="/MyBlog/upload/css/cropper.min.css">
-    <link rel="stylesheet" href="/MyBlog/upload/css/ImgCropping.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/upload/css/cropper.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/upload/css/ImgCropping.css">
 
 </head>
 <body style="background: #eee">
@@ -53,8 +53,8 @@
 <!--图片裁剪框 end-->
 
 
-<script src="/MyBlog/upload/js/jquery-2.1.1.js"></script>
-<script src="/MyBlog/upload/js/cropper.min.js"></script>
+<script src="${pageContext.request.contextPath}/upload/js/jquery-2.1.1.js"></script>
+<script src="${pageContext.request.contextPath}/upload/js/cropper.min.js"></script>
 <script>
 
     //弹出框水平垂直居中
