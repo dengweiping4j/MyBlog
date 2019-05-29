@@ -60,8 +60,8 @@ public class UserController {
      */
     @RequestMapping(value = "uploadImg", method = RequestMethod.POST)
     @ResponseBody
-    public Result uploadImg(@RequestBody String imgBase64) {
-        System.out.println(imgBase64);
+    public Result uploadImg(@RequestBody String base64url) {//待处理
+        System.out.println(base64url);
         return ResultGenerator.genSuccessResult();
     }
 

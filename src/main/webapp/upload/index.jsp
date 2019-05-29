@@ -139,16 +139,15 @@
         } else {
             var cas = $('#tailoringImg').cropper('getCroppedCanvas');//获取被裁剪后的canvas
             var base64url = cas.toDataURL('image/png'); //转换为base64地址形式
-            var imgBase64 = base64url;
             $.ajax({
                 type: "POST",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
                 url: "/MyBlog/user/uploadImg",//url
                 contentType: "application/json; charset=utf-8",
-                data: JSON.stringify(imgBase64),
+                data: JSON.stringify(base64url),
                 success: function (result) {
                     console.log(result);
-                    $("#finalImg").prop("src", base64url);//显示为图片的形式
+                    $("#finalImg").prop("src", result.imgUrl);//显示为图片的形式
                     //关闭裁剪框
                     closeTailor();
                 },
