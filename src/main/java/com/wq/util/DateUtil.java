@@ -45,7 +45,7 @@ public class DateUtil {
     }
 
     /*
-     * @Description 日期格式化为yyyy-MM-dd HH:mm:ss
+     * @Description 将当前日期格式化为yyyy-MM-dd HH:mm:ss
      * @return java.lang.String
      * @throws
      * @author dengweiping
