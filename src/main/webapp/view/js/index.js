@@ -1,11 +1,11 @@
 var url = '/MyBlog/article';
 $(function () {
-    //加载文章列表
-    page(1);
     //检查登录状态
     checkLogin();
     //根据登录状态加载“关于我”模块
     findAboutme(getCookie("userId"));
+    //加载文章列表
+    page(1);
     //加载点赞状态和点赞数
     var handUpArr = $("a[name='handUp']");
     for (var x = 0; x < handUpArr.length; x++) {
@@ -19,7 +19,7 @@ function findAboutme(userId) {
     if (userId != undefined && userId != '') {
         var str = "<ul>" +
             "      <i><img src='/MyBlog/view/images/" + getCookie("profilePhoto") + "'></i><br><b" +
-            "              style='font-size: 16px;margin-left: 5px;'>" + getCookie("userName") + "</b>" +
+            "              style='font-size: 16px;margin-left: -25px;'>" + getCookie("userName") + "</b>" +
             "          <table class='table' style='text-align: center'>" +
             "              <tbody>" +
             "              <tr>" +
