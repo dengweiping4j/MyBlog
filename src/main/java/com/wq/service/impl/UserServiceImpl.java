@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User addUser(User user) {
         user.setPkid(UUID.randomUUID().toString());
-        user.setUserType("3");
+        user.setUserType("3");//通过页面注册的均为普通用户
         String MD5pwd = MD5Util.MD5Encode(user.getPassword(), "UTF-8");
         user.setPassword(MD5pwd);
         if (StringUtil.isEmpty(user.getProfilePhoto())) {

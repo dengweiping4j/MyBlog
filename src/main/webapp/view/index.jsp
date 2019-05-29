@@ -40,7 +40,7 @@
         <div id="about_me" class="about_me">
 
         </div>
-        <div class="search">
+       <%-- <div class="search">
             <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
                 <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词"
                        style="color: rgb(153, 153, 153);"
@@ -51,7 +51,7 @@
                 <input name="tbname" value="news" type="hidden">
                 <input name="Submit" class="input_submit" value="搜索" type="submit">
             </form>
-        </div>
+        </div>--%>
         <div class="fenlei">
             <h2>文章分类</h2>
             <ul>

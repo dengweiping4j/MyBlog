@@ -57,6 +57,7 @@ public class StringUtil {
      * @date 2019/5/27 15:57
      */
     public static String replaceStr(String str) {
+        str = str.trim();
         StringBuffer result = new StringBuffer();
         for (int pos = 0; pos < str.length(); pos++) {
             switch (str.charAt(pos)) {
